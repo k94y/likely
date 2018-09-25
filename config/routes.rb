@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :artists, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :genres, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :labels, only: [:index, :show, :create, :edit, :update, :destroy]
-    resources :uses, only: [:index, :show,  :edit, :update, :destroy]
+    resources :users, only: [:index, :show,  :edit, :update, :destroy]
     resources :orders, only: [:index, :show, :update, :destroy]
     resources :contacts, only: [:index, :show, :update]
   end
