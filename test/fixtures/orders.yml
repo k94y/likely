@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  shipment_status: 1
+  cancel_request: false
+
+two:
+  user: two
+  shipment_status: 1
+  cancel_request: false

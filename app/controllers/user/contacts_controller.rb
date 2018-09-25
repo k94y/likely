@@ -1,4 +1,4 @@
-class User::ContactsController < ApplicationController
+class User::ContactsController < User::Base
   def new
   end
 
