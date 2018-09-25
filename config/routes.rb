@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :user do
     get 'contacts/new'
     get 'contacts/create'

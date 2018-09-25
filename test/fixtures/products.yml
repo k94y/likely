@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label: one
+  genre: one
+  name: MyString
+  image_id: MyText
+  price: 1
+  stock: 1
+  type: false
+  release_date: 2018-09-23
+
+two:
+  label: two
+  genre: two
+  name: MyString
+  image_id: MyText
+  price: 1
+  stock: 1
+  type: false
+  release_date: 2018-09-23

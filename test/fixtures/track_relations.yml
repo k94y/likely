@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  song: one
+  product: one
+  artist: one
+  is_movie: false
+  disc_number: 1
+  track_order: 1
+
+two:
+  song: two
+  product: two
+  artist: two
+  is_movie: false
+  disc_number: 1
+  track_order: 1
