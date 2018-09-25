@@ -3,9 +3,11 @@ class Admin::ProductsController < Admin::Base
   end
 
   def new
+    @product = Product.new
   end
 
   def create
+    redirect_to admin_products_path
   end
 
   def edit

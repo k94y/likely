@@ -69,3 +69,5 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
+#後から追加
+gem 'nested_form_fields'
