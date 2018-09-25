@@ -1,8 +1,14 @@
-class User::CartsController < User::Base
+class Admin::LabelsController < Admin::Base
   def index
   end
 
+  def show
+  end
+
   def create
+  end
+
+  def edit
   end
 
   def update

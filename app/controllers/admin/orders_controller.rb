@@ -1,8 +1,8 @@
-class User::CartsController < User::Base
+class Admin::OrdersController < Admin::Base
   def index
   end
 
-  def create
+  def show
   end
 
   def update
