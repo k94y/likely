@@ -1,2 +1,29 @@
-<h1>Admin::Artists#index</h1>
-<p>Find me in app/views/admin/artists/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-md-3">
+			<h4>アーティスト登録</h4>
+			<%= render 'admin/registration', var: @artist %>
+		</div>
+		<div class="col-lg-9 col-md-9">
+			<h4>アーティスト一覧</h4>
+			<table>
+				<tr>
+					<td style="width: 100px"> image</td>
+					<td style="width: 200px"> name</td>
+					<td style="width: 200px"> artist</td>
+					<td style="width: 50px"></td>
+					<td style="width: 50px"></td>
+				</tr>
+				<% @artists.each do |artist| %>
+					<tr>
+						<td> <%= attachment_image_tag artist, :image, :fill, 150, 100, format: 'jpeg' %></td>
+						<td> <%= artist.name %></td>
+						<td> <%= artist.name_kana %></td>
+						<td> <%= link_to "編集", edit_admin_artist_path(artist) %></td>
+						<td> <%= link_to "削除", admin_artist_path(artist), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,12 @@
+<%= form_for [:admin, var] do |f| %>
+	<label> name</label>
+	<%= f.text_field :name %>
+	<% if request.path_info == admin_artists_path %>
+		<label> name(カナ)</label>
+		<%= f.text_field :name_kana %>
+	<% end %>
+	<% if request.path_info == admin_artists_path || request.path_info == admin_genres_path %>
+		<%= f.attachment_field :image %>
+	<% end %>
+	<%= f.submit "Submit" %>
+<% end %>
