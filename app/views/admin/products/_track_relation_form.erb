@@ -1,0 +1,9 @@
+<tr>
+    <td><%= f.label :artist_id %>
+    <%= f.select :artist_id, [["Mr.Children", 1]] %></td>
+
+    <td><%= f.label :song_id %>
+    <%= f.select :song_id, [["Mr.Children", 1]] %></td>
+
+    <td><%= link_to_remove_field("track remove", f, {}) %></td>
+</tr>

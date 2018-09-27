@@ -3,7 +3,9 @@ class Product < ApplicationRecord
   belongs_to :genre
   has_many :cart_details
   has_many :order_details
-  has_many :track_relations
+  has_many :discs
+  accepts_nested_attributes_for :discs, allow_destroy: true
+
 
 
   validates :name, presence: true, length: {in: 1..255}

@@ -1,0 +1,17 @@
+<div class="field">
+    <%= f.label :disc_order %>
+    <%= f.number_field :disc_order %>
+    <%= link_to_remove_field("remove disc", f, {})%>
+    <%= link_to_add_field("track add", f, :track_relations, {}) %>
+    <table class="table">
+        <thead>
+            <th>Artist</th>
+            <th>曲名</th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody data-id="<%= hoge.to_s %>">
+            
+        </tbody>
+    </table>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_122734) do
+ActiveRecord::Schema.define(version: 2018_09_25_103837) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2018_09_23_122734) do
     t.boolean "reply_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "product_id"
+    t.boolean "is_movie", default: false
+    t.integer "disc_order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_discs_on_product_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -104,15 +113,12 @@ ActiveRecord::Schema.define(version: 2018_09_23_122734) do
 
   create_table "track_relations", force: :cascade do |t|
     t.integer "song_id"
-    t.integer "product_id"
     t.integer "artist_id"
-    t.boolean "is_movie", default: false
-    t.integer "disc_number"
     t.integer "track_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "disc_id"
     t.index ["artist_id"], name: "index_track_relations_on_artist_id"
-    t.index ["product_id"], name: "index_track_relations_on_product_id"
     t.index ["song_id"], name: "index_track_relations_on_song_id"
   end
 
