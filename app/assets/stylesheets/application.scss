@@ -62,23 +62,25 @@
 
 
 /*user-header*/
-.header-box{
-	width: 100%;
-	height: 100px;
+header{
 	background-color: #444444;
+}
+.header-box{
+	height: 100px;
+	width: 1200px;
+	margin: 0 auto;
 }
 .header-title{
 	float: left;
 	font-size: 70px;
 	font-weight: bold;
-	padding-left: 150px;
+	padding-left: 20px;
 	line-height: 100px;
 	color: white;
 	font-family: 'Athelas';
 }
 .header-nav{
 	float: right;
-	padding-right: 150px;
 }
 .header-nav-list{
 	float: left;
