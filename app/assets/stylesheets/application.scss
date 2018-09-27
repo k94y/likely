@@ -31,22 +31,24 @@
 
 
 /*admin-header*/
+.admin-header{
+	background-color: silver;
+}
 .admin-header-box{
-	width: 100%;
+	width: 1200px;
 	height: 70px;
+	margin: 0 auto;
 	background-color: silver;
 }
 .admin-header-title{
 	float: left;
 	font-size: 35px;
 	font-weight: bold;
-	padding-left: 150px;
 	line-height: 70px;
 	font-family: 'Athelas';
 }
 .admin-header-nav{
 	float: right;
-	padding-right: 150px;
 }
 .admin-header-nav-list{
 	float: left;
