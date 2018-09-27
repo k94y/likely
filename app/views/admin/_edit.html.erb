@@ -6,8 +6,8 @@
 		<%= f.text_field :name_kana %>
 	<% end %>
 	<% if request.path_info == edit_admin_artist_path || request.path_info == edit_admin_genre_path %>
-		<%= image_tag var.image_id_url %>
-		<%= f.attachment_field :image_id %>
+		<%= attachment_image_tag var, :image, :fill, 150, 100, format: 'jpeg' %>
+		<%= f.attachment_field :image %>
 	<% end %>
 	<%= f.submit "Submit" %>
 <% end %>
