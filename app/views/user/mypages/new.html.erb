@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    .sign-header{
+      height: 100px;
+      background-color: #444;
+      text-align: center;
+      color:white;
+      font-size: 80px;
+    }
+    .field{
+      margin: 30px 0;
+    }
+    main{
+      width:60%;
+      margin: 0 auto;
+    }
+    .fields{
+      width:70%;
+      margin:0 auto;
+    }
+
+    .sign-title{
+      text-align: center;
+      font-size: 48px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="sign-header">Likely</div>
+  <main>
+    <h2 class="sign-title">Sign up</h2><hr>
+    <%= form_for @info, url: mypages_info_path  do |f| %>
+      <div class="fields">
+        <div class="field">
+          <%= f.label :"氏名" %><br />
+          <%= f.text_field :name %>
+        </div>
+        <div class="fields">
+          <%= f.label :"フリガナ" %>
+          <%= f.text_field :name_kana %>
+        </div>
+        <div class="fields">
+          <%= f.label :"郵便番号" %>
+          <%= f.text_field :postal_code %>
+        </div>
+        <div class="fields">
+          <%= f.label :"都道府県" %>
+          <%= f.text_field :state %>
+        </div>
+        <div class="fields">
+          <%= f.label :"市町村" %>
+          <%= f.text_field :city %>
+        </div>
+        <div class="fields">
+          <%= f.label :"住所" %>
+          <%= f.text_field :place %>
+        </div>
+        <div class="fields">
+          <%= f.label :"電話番号" %>
+          <%= f.text_field :tel %>
+        </div>
+        <div class="actions">
+          <%= f.submit "完了" %>
+        </div>
+        <%= link_to "Do you have an account?", new_user_session_path   %><br />
+      </div>
+    <% end %>
+  </main>
+  <%= link_to "delete",destroy_user_session_path, method: :delete %>
+</body>
+</html>

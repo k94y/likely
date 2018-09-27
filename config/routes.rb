@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {registrations: 'users/registrations'}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -15,14 +15,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :user do
-    get '/', to: "genres#index"
+    root to: 'genres#index'
     resources :genres, only: [:show]
     resources :searches, only: [:index]
     resources :songs, only: [:show]
     resources :orders, only: [:index, :new, :create, :update]
-    resource :mypages, only: [:show, :edit, :update, :destroy]
+    resource :mypages, only: [:show, :edit, :new, :create, :update, :destroy]
     resources :carts, only: [:index, :update, :destroy]
     resource :contacts, only: [:new, :create]
     post 'products/:id/add', to: "products#add"
+    patch 'mypages/info', to: 'mypages#create_info'
   end
 end
