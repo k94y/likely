@@ -7,8 +7,36 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
+  <header>
+  <div class="header-box clearfix">
+    <div class="header-title"><%= link_to " Likely ", root_path %></div>
+    <div class="header-search-box">
+      <p>search</p>
+    </div>
+    <% if user_signed_in? %>
+      <nav class="header-nav">
+          <ul>
+              <li class="header-nav-list"><%= link_to " My Page ", mypages_path, class: "btn btn-success" %></li>
+              <li class="header-nav-list"><%= link_to " ", carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li class="header-nav-list"><%=link_to "logout",destroy_user_session_path,method: :delete %></li>
+          </ul>
+      </nav>
+    <% else %>
+      <nav class="header-nav">
+        <ul>
+          <li class="header-nav-list">
+            <%=link_to "signup",new_user_registration_path  %>
+          </li>
+          <li class="header-nav-list">
+            <%=link_to "login",new_user_session_path  %>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
+  </div>
+  </header>
   <div class="container">
-    <% content_for :content do %>  
+    <% content_for :content do %>
       <%= yield %>
     <% end %>
     <%= render template: "layouts/application" %>
