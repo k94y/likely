@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
   <style>
     .sign-header{
       height: 100px;
@@ -11,63 +10,79 @@
       font-size: 80px;
     }
     .field{
-      margin: 30px 0;
+      margin: 30px auto;
+      width:400px;
     }
     main{
       width:60%;
       margin: 0 auto;
     }
     .fields{
-      width:70%;
-      margin:0 auto;
+      margin:30px 0;
     }
 
     .sign-title{
       text-align: center;
       font-size: 48px;
     }
-
-
+    .sign-field{
+      height:35px;
+    }
+    .sign-field-lg{
+      width:80%;
+    }
+    .sign-field-sm{
+      width:40%;
+    }
+    .actions{
+      margin:0 auto;
+      width:50%;
+      text-align: center;
+    }
+    .actions-block{
+      display:block;
+      margin:15px auto;
+    }
   </style>
 </head>
+
 <body>
   <div class="sign-header">Likely</div>
   <main>
     <h2 class="sign-title">Sign up</h2><hr>
-    <%= form_for @info, url: mypages_info_path  do |f| %>
-      <div class="fields">
-        <div class="field">
+    <%= form_with model: @info ,url: mypages_info_path  do |f| %>
+      <div class="field">
+        <div class="fields">
           <%= f.label :"氏名" %><br />
-          <%= f.text_field :name %>
+          <%= f.text_field :name, class: "sign-field sign-field-lg" %>
         </div>
         <div class="fields">
-          <%= f.label :"フリガナ" %>
-          <%= f.text_field :name_kana %>
+          <%= f.label :"フリガナ" %><br>
+          <%= f.text_field :name_kana, class: "sign-field sign-field-lg" %>
         </div>
         <div class="fields">
-          <%= f.label :"郵便番号" %>
-          <%= f.text_field :postal_code %>
+          <%= f.label :"郵便番号" %><br>
+          <%= f.text_field :postal_code, class: "sign-field sign-field-lg" %>
         </div>
         <div class="fields">
-          <%= f.label :"都道府県" %>
-          <%= f.text_field :state %>
+          <%= f.label :"都道府県" %><br>
+          <%= f.text_field :state, class: "sign-field sign-field-sm" %>
         </div>
         <div class="fields">
-          <%= f.label :"市町村" %>
-          <%= f.text_field :city %>
+          <%= f.label :"市町村" %><br>
+          <%= f.text_field :city, class: "sign-field sign-field-lg" %>
         </div>
         <div class="fields">
-          <%= f.label :"住所" %>
-          <%= f.text_field :place %>
+          <%= f.label :"住所" %><br>
+          <%= f.text_field :address, class: "sign-field sign-field-lg" %>
         </div>
         <div class="fields">
-          <%= f.label :"電話番号" %>
-          <%= f.text_field :tel %>
+          <%= f.label :"電話番号" %><br>
+          <%= f.text_field :tel, class: "sign-field sign-field-sm" %>
         </div>
         <div class="actions">
-          <%= f.submit "完了" %>
+          <%= f.submit "完了", class:"actions-block" %>
         </div>
-        <%= link_to "Do you have an account?", new_user_session_path   %><br />
       </div>
     <% end %>
   </main>
