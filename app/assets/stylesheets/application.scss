@@ -16,3 +16,95 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clearfix:after {
+  content:"";
+  display:block;
+  clear:both;
+}
+
+
+/*admin-header*/
+.admin-header{
+	background-color: silver;
+}
+.admin-header-box{
+	width: 1200px;
+	height: 70px;
+	margin: 0 auto;
+	background-color: silver;
+}
+.admin-header-title{
+	float: left;
+	font-size: 35px;
+	font-weight: bold;
+	line-height: 70px;
+	font-family: 'Athelas';
+}
+.admin-header-nav{
+	float: right;
+}
+.admin-header-nav-list{
+	float: left;
+	padding-right: 30px;
+	list-style: none;
+	line-height: 70px;
+}
+.admin-header-box a {
+	text-decoration: none;
+	color: black;
+}
+
+
+
+/*user-header*/
+header{
+	background-color: #444444;
+}
+.header-box{
+	height: 100px;
+	width: 1200px;
+	margin: 0 auto;
+}
+.header-title{
+	float: left;
+	font-size: 70px;
+	font-weight: bold;
+	padding-left: 20px;
+	line-height: 100px;
+	color: white;
+	font-family: 'Athelas';
+}
+.header-nav{
+	float: right;
+}
+.header-nav-list{
+	float: left;
+	padding-right: 30px;
+	list-style: none;
+	line-height: 100px;
+	font-size: 20px;
+}
+.header-box a {
+	text-decoration: none;
+	color: white;
+}
+.header-search-box{
+	float: left;
+	width: 200px;
+	height: 30px;
+	background-color: white;
+	border-radius:20px;
+    margin: 40px 250px;
+    text-align: center;
+}
+
+
+
+

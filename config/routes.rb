@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :user do
-    root to: 'genres#index'
+    root to: "genres#index"
     resources :genres, only: [:show]
     resources :searches, only: [:index]
     resources :songs, only: [:show]
