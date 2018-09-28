@@ -1,7 +1,7 @@
 class TrackRelation < ApplicationRecord
-  belongs_to :song
+  belongs_to :song, inverse_of: :track_relations
   belongs_to :disc
   belongs_to :artist
 
-  validates :is_movie, presence: true
+  accepts_nested_attributes_for :song
 end

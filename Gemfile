@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # My setting
 gem 'devise'
 gem 'carrierwave'
+gem 'carrierwave-audio'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'jquery-rails'

@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_103837) do
     t.string "name"
     t.text "image_id"
     t.integer "price"
-    t.integer "stock"
-    t.boolean "type", default: false
+    t.integer "stock", default: 0
+    t.boolean "product_type", default: false
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_103837) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.text "music_id"
+    t.text "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

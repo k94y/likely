@@ -1,9 +1,14 @@
 <tr>
-    <td><%= f.label :artist_id %>
-    <%= f.select :artist_id, [["Mr.Children", 1]] %></td>
-
-    <td><%= f.label :song_id %>
-    <%= f.select :song_id, [["Mr.Children", 1]] %></td>
-
+    <td>
+        <%= f.select :artist_id, [["B'z", 1]],{}, class: 'form-control'  %>
+    </td>
+   <!--<%= f.fields_for :songs do |sf| %>
+        <%= render partial: "song_form", locals: {f: sf} %>
+    <% end %>-->
+    <td></td>
+    <td></td>
+    <td>
+        <%= f.select :song_id, [["Song1", 1], ["Song2", 1],["Song3", 1],["Song3", 1]],{}, class: 'form-control'  %>
+    </td>
     <td><%= link_to_remove_field("track remove", f, {}) %></td>
 </tr>

@@ -7,21 +7,18 @@ $(document).on 'ready page:load', ->
   $('form').on 'click', '.add_field', (event) ->
     # 現在時刻をミリ秒形式で取得
     time = new Date().getTime()
-
     # ヘルパーで作ったインデックス値を↑と置換
     regexp = new RegExp($(this).data('id'), 'g')
 
     # ヘルパーから渡した fields(HTML) を挿入
-    data_id = $(this).data('id')
     association = $(this).data('association')
+    insert_item = $(this).data('fields').replace(regexp, time)
     if association == "discs"
-        $(this).after($(this).data('fields').replace(regexp, time))
+        $(this).after(insert_item)
     else if association == "track_relations"
-        # console.log(data_id)
-        # console.log($('tbody').data('id'))
-        # $('tbody')
-        # $('tbody').append($(this).data('fields'))
-        $(this).after($(this).data('fields').replace(regexp, time))
+        table_body = $(this).next('table').children('tbody')
+        table_body.append(insert_item)
+        # $(this).after($(this).data('fields'))
     else
 
     event.preventDefault()
