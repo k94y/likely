@@ -1,26 +1,82 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    .sign-header{
+      height: 100px;
+      background-color: #444;
+      text-align: center;
+      color:white;
+      font-size: 80px;
+    }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    .sign-form-boxes{
+      border: 1px solid #ddd;
+    }
+    .sign-form-box{
+      margin:100px auto 0;
+      width:50%;
+    }
+    .sign-form-top{
+      height:100px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 32px;
+    }
+    .sign-form-size{
+      width:70%;
+      height: 30px;
+      margin:30px auto 0;
+      display: block;
+    }
+    .field-rememberme{
+      width:130px;
+      margin:0 auto;
+    }
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    .sign-forget{
+      display: block;
+      width:180px;
+      margin:20px auto;
+    }
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    .sign-footer{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="sign-header">Likely</div>
+  <div class="sign-form-box">
+    <div class="sign-form-top sign-form-boxes">Sign in</div>
+    <div class="sign-form-bottom sign-form-boxes">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: :"sign-form-size" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: :"sign-form-size" %>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <div class="field field-rememberme">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end -%>
+
+        <div class="actions">
+          <%= f.submit "Sign in", class: :"sign-form-size", style: :"background-color:#ccc" %>
+        </div>
+      <% end %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: :"sign-forget" %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="sign-footer">
+    <p>Do you have an account?</p>
+    <%= link_to "Create an account!",new_user_registration_path  %>
+  </div>
+</body>
+</html>

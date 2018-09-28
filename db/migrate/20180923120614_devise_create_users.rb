@@ -38,6 +38,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :name_kana
       t.string :postal_code
+      t.string :state
+      t.string :city
       t.string :address
       t.string :tel
     end
