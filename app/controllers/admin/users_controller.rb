@@ -5,6 +5,7 @@ class Admin::UsersController < Admin::Base
 
   def show
     @user = User.find(params[:id])
+    @orders = Order.where(user_id: @user.id)
   end
 
   def edit

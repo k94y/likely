@@ -18,9 +18,4 @@
 //= require bootstrap-sprockets
 
 
-// ドロップリストを変更した瞬間に送信。admin::users#showで使用。
-$(function(){
-	$("#submit_select").change(function(){
-		$("#submit_form").submit();
-	});
-});
+

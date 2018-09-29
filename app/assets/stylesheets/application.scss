@@ -126,11 +126,20 @@ header {
 	background: image-url('/assets/top.jpg');
 	background-position: center;
 	background-size: cover;
+	position: relative;
 }
 .main-image p {
 	color: white;
-	opacity: 0.8;
-	margin: 0 auto;
+	opacity: 0.9;
+	font-size: 56px;
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
 }
 
 .content {
@@ -145,9 +154,14 @@ header {
 }
 .genre-image p {
 	position: absolute;
-	bottom: 0;
-	left: 0;
+	top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
 	text-decoration: none;
-	font-size: 36px;
+	font-size: 56px;
 	color: white;
 }
