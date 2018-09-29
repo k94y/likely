@@ -1,11 +1,6 @@
 class User::MypagesController < User::Base
 	def new
-		if user_signed_in?
-			@info = User.find(current_user.id)
-		else
-			redirect_to root_path
-		end
-		redirect_to root_path
+		@info = User.find(current_user.id)
 	end
 
 	def show
