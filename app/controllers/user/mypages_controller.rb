@@ -5,7 +5,6 @@ class User::MypagesController < User::Base
 		else
 			redirect_to root_path
 		end
-		redirect_to root_path
 	end
 
 	def show
