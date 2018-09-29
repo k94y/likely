@@ -1,2 +1,44 @@
 <h1>User::Searches#index</h1>
 <p>Find me in app/views/user/searches/index.html.erb</p>
+<%= @res.each do |res| %>
+	<%= res.name %>
+<% end %>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+        	<% if @sel == 1 %>
+        		<%# アーティスト %>
+        		<th>[image]</th>
+        		<th>アーティスト名</th>
+        		<th>カナ</th>
+        	<% elsif @sel == 2 %>
+        		<%# 曲名 %>
+        		<th>曲名</th>
+        	<% elsif @sel == 3 %>
+        		<%# 商品名 %>
+        		<th>[image]</th>
+        		<th>商品名</th>
+        	<% end %>
+        </tr>
+    </thead>
+    <tbody>
+    	<%= @res.each do |res| %>
+		    <tr>
+		    	<% if @sel == 1 %>
+		    		<%# アーティスト %>
+		    		<th>[image]</th>
+		    		<th><%= res.name %></th>
+		    		<th><%= res.name_kana %></th>
+		    	<% elsif @sel == 2 %>
+		    		<%# 曲名 %>
+		    		<th><%= res.name %></th>
+		    	<% elsif @sel == 3 %>
+		    		<%# 商品名 %>
+		    		<th>[image]</th>
+		    		<th><%= res.name %></th>
+		    	<% end %>
+		    </tr>
+        <% end %>
+    </tbody>
+</table>
