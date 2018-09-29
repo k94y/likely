@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :image_id
       t.integer :price
       t.integer :stock, default: 0
-      t.boolean :product_type, default: false
+      t.integer :product_type, default: 0
       t.date :release_date
 
       t.timestamps

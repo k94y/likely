@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
     t.text "image_id"
     t.integer "price"
     t.integer "stock", default: 0
-    t.boolean "product_type", default: false
+    t.integer "product_type", default: 0
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

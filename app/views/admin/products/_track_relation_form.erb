@@ -1,12 +1,9 @@
 <tr>
     <td>
-        <%= f.select :artist_id, [["B'z", 1]],{}, class: 'form-control'  %>
+        <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
     </td>
-
     <%= new_song_field(f, :song, {}) %>
-
-    <!--<td>
-        <%= f.select :song_id, [["Song1", 1], ["Song2", 1],["Song3", 1],["Song3", 1]],{}, class: 'form-control'  %>
-    </td>-->
+    <td><%= select_song_field("既存の楽曲から選択", f, :song, {})%></td>
     <td><%= link_to_remove_field("track remove", f, :track_relations,{}) %></td>
 </tr>
+

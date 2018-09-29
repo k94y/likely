@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'ready page:load', ->
+$(document).on 'turbolinks:load', ->
   # 追加ボタンを押されたとき
   $('form').on 'click', '.add_field', (event) ->
     # 現在時刻をミリ秒形式で取得
@@ -33,3 +33,21 @@ $(document).on 'ready page:load', ->
       $(this).closest('tr').hide()
 
     event.preventDefault()
+
+  $('form').on 'click', '.change-mode', (e) ->
+    $(this).parent().prevAll('.song-form').remove()
+    mode = $(this).data('mode')
+    if mode == "new"
+      console.log('new')
+      insert_item = $(this).data('exist')
+      $(this).parent().before(insert_item)
+      $(this).data('mode', 'exist')
+      $(this).text('既存の楽曲から選択')
+    else if mode == "exist"
+      console.log('exist')
+      insert_item = $(this).data('new')
+      $(this).parent().before(insert_item)
+      $(this).data('mode', 'new')
+      $(this).text('新規楽曲を選択')
+
+    e.preventDefault()

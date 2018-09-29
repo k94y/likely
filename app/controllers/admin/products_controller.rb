@@ -6,15 +6,13 @@ class Admin::ProductsController < Admin::Base
     @artists = Artist.all
     @genres = Genre.all
     @labels = Label.all
+    @songs = Song.all
 
     @product = Product.new
-    # @product.discs.new
-    # @product.discs.first.track_relations.new
     @song = Song.new
   end
 
   def create
-
     product = Product.new(product_params)
     if product.save!
       redirect_to admin_products_path

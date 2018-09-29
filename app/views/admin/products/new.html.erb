@@ -1,4 +1,4 @@
-<div class="form-horizontal" role='form'>
+<div class="form-horizontal mt-3" role='form'>
     <%= form_for [:admin, @product] do |f| %>
         <div class="col-xs-3">
             <div class ="field form-group ">
@@ -21,7 +21,7 @@
                     <%= f.label :product, :product_type, class:'control-label' %>
                 </div>
                 <div class='col-xs-10'>
-                   <%= f.select :product_type, [["シングル", false],["アルバム", true]],{}, class: 'form-control' %>
+                   <%= f.select :product_type, [["シングル", 0],["アルバム", 1]],{}, class: 'form-control' %>
                 </div>
             </div>
 
