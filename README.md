@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+#　曲追加をできるようにするために
+carrierwaveを使ってmp3ファイルをdbに保存するにはsoxが必要です。
+
+`apt-get install sox` (soxのインストール)
+`apt-get install libsox-fmt-mp3` (soxは標準でmp3に対応してないのでfmtを追加する)

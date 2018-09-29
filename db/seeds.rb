@@ -13,11 +13,9 @@
 artist = Artist.new(:name => 'B\'z', :name_kana => 'ビーズ')
 genre = Genre.new(:name => 'Rock')
 label = Label.new(:name => 'Being')
-song = Song.new(:name => 'Ultra Soul')
 
 # TrackRelation = TrackRelation.new()
 
 artist.save!
 genre.save!
 label.save!
-song.save!

@@ -8,25 +8,19 @@ class Admin::ProductsController < Admin::Base
     @labels = Label.all
 
     @product = Product.new
-    @product.discs.new
-    @product.discs.first.track_relations.new
+    # @product.discs.new
+    # @product.discs.first.track_relations.new
     @song = Song.new
   end
 
   def create
-    # p '-------'
-    # p song_params
-    # p '-------'
-    # song = Product.new(product_params)
-    product = Product.new(product_params)
 
-    # if song.save!
-      if product.save!
-        redirect_to admin_products_path
-      else
-        redirect_to new_admin_product_path
-      end
-    # end
+    product = Product.new(product_params)
+    if product.save!
+      redirect_to admin_products_path
+    else
+      redirect_to new_admin_product_path
+    end
   end
 
   def edit
@@ -46,7 +40,7 @@ class Admin::ProductsController < Admin::Base
         :id, :disc_order, :_destroy,
         track_relations_attributes: [
           :id, :song_id, :artist_id, :disk_id, :track_order,  :_destroy,
-          songs_attributes: [
+          song_attributes: [
             :id, :name, :file, :file_cache, :remove_file
           ]
         ]
@@ -54,9 +48,4 @@ class Admin::ProductsController < Admin::Base
     )
   end
 
-  # def song_params
-  #   params.require(:song).permit(
-  #     :id, :name, :file, :file_cache, :remove_file
-  #   )
-  # end
 end

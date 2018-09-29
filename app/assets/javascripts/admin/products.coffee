@@ -19,14 +19,17 @@ $(document).on 'ready page:load', ->
         table_body = $(this).next('table').children('tbody')
         table_body.append(insert_item)
         # $(this).after($(this).data('fields'))
-    else
 
     event.preventDefault()
 
   # 削除ボタンを押されたとき
   $('form').on 'click', '.remove_field', (event) ->
-    # 削除ボタンを押したフィールドの _destroy = true にする
     $(this).prev('input[name*=_destroy]').val('true')
-    # 削除ボタンが押されたフィールドを隠す
-    $(this).closest('div').hide()
+
+    association = $(this).data('association')
+    if association == "discs"
+      $(this).parents('.disc-new').hide()
+    else if association == "track_relations"
+      $(this).closest('tr').hide()
+
     event.preventDefault()
