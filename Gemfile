@@ -64,12 +64,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # My setting
 gem 'devise'
 gem 'carrierwave'
+gem 'carrierwave-audio'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-
-#後から追加
-gem 'nested_form_fields'
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 

@@ -1,6 +1,7 @@
 class CreateTrackRelations < ActiveRecord::Migration[5.2]
   def change
     create_table :track_relations do |t|
+      t.references :disc, foreign_key: true
       t.references :song, foreign_key: true
       t.references :product, foreign_key: true
       t.references :artist, foreign_key: true

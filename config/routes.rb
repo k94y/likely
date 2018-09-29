@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/', to: "tops#index"
     resources :products, only: [:index, :new, :create, :edit, :update, :destroy]
+    
     resources :artists, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :genres, only: [:index, :show, :create, :edit, :update, :destroy]
     resources :labels, only: [:index, :show, :create, :edit, :update, :destroy]
