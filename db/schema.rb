@@ -140,6 +140,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
     t.string "name"
     t.string "name_kana"
     t.string "postal_code"
+    t.string "state"
+    t.string "city"
     t.string "address"
     t.string "tel"
     t.index ["email"], name: "index_users_on_email", unique: true
