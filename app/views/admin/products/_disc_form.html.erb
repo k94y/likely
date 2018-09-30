@@ -11,7 +11,7 @@
             <%= link_to_remove_field("remove disc", f, :discs, {})%>
         </div>
     </div>
-   
+
     <%= link_to_add_field("track add", f, :track_relations, {}) %>
     <table class="table">
         <thead>
@@ -22,7 +22,11 @@
             <th></th>
         </thead>
         <tbody>
-            
+            <% f.object.track_relations.each do |tr| %>
+                <%= f.fields_for :track_relations, tr, child_index: tr.object_id do |builder| %>
+                    <%= render "admin/products/track_relation_form", f: builder %>
+                <% end %>
+            <% end %>
         </tbody>
     </table>
 </div>
