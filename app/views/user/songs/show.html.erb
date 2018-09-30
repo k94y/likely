@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		div{
+			text-align: left;
+		}
+	</style>
+</head>
+<body>
+	<br>
+	<ol class="breadcrumb">
+		<li><%=link_to "Top","#" %></li>
+		<li>
+			<%=link_to "#" do %>
+				<span><%= @track.disc.product.genre.name %></span>
+			<% end %>
+		</li>
+		<li class="active">パンくず</li>
+	</ol>
+</body>
+</html>
