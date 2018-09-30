@@ -1,6 +1,8 @@
 class Song < ApplicationRecord
-	has_many :track_relations
+	mount_uploader :file, AudioFileUploader
 
+	has_many :track_relations
+	
 	validates :name, presence: true, length: {in: 1..255}
-	validates :music_id, presense: true
+	validates :file, presence: true
 end
