@@ -48,8 +48,7 @@
 				 <% else %> 到着済<% end %> </td>
 			<td>
 				<%= form_for [:admin, order] do |f| %>
-					<%= f.select :shipment_status, options_for_select({"準備中": 0, "発送済": 1, "到着済": 2}, order.shipment_status) %>
-					<%= f.submit %>
+					<%= f.select :shipment_status, options_for_select({"準備中": 0, "発送済": 1, "到着済": 2}, order.shipment_status), {}, onchange: "javascript: this.form.submit();" %>
 				<% end %>
 			</td>
 			<td> <% if order.cancel_request %> <span style="color: red"> キャンセル</span>
@@ -59,3 +58,4 @@
 	<% end %>
 </table>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
