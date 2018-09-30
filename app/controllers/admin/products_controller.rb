@@ -9,7 +9,6 @@ class Admin::ProductsController < Admin::Base
     @songs = Song.all
 
     @product = Product.new
-    @song = Song.new
   end
 
   def create
@@ -22,9 +21,21 @@ class Admin::ProductsController < Admin::Base
   end
 
   def edit
+    @artists = Artist.all
+    @genres = Genre.all
+    @labels = Label.all
+    @songs = Song.all
+
+    @product = Product.find(params[:id])
   end
 
   def update
+    product = Product.find(params[:id])
+    if product.update!(product_params)
+      redirect_to admin_products_path
+    else
+      redirect_to new_admin_product_path
+    end
   end
 
   def destroy
