@@ -6,12 +6,12 @@
 		</div>
 		<div class="col-lg-9 col-md-9">
 			<h4> ジャンル一覧</h4>
-			<table>
+			<table class="admin-list-table">
 				<tr>
-					<td style="width: 100px"> image</td>
-					<td style="width: 200px"> name</td>
-					<td style="width: 50px"></td>
-					<td style="width: 50px"></td>
+					<th style="width: 100px"> image</td>
+					<th style="width: 200px"> name</td>
+					<th style="width: 50px"></td>
+					<th style="width: 50px"></td>
 				</tr>
 				<% @genres.each do |genre| %>
 					<tr>
@@ -22,6 +22,7 @@
 					</tr>
 				<% end %>
 			</table>
+			<%= paginate @genres, class: "paginate" %>
 		</div>
 	</div>
 </div>

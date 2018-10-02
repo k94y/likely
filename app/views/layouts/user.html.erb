@@ -35,11 +35,9 @@
     <% end %>
   </div>
   </header>
-  <div class="container">
     <% content_for :content do %>
       <%= yield %>
     <% end %>
     <%= render template: "layouts/application" %>
-  </div>
 </body>
 </html>
