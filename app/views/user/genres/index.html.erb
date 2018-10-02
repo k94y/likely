@@ -1,2 +1,16 @@
-<h1>User::Genres#index</h1>
-<p>Find me in app/views/user/genres/index.html.erb</p>
+<div class="main-image">
+	<p> Find Your Favorite Music.</p>
+</div>
+
+<div class="content clearfix">
+	<% @genres.each do |genre| %>
+		<div class="genre-image">
+			<%= link_to genre_path(genre) do %>
+				<%= attachment_image_tag genre, :image, :fill, 240, 200 %>
+				<p> <%= genre.name %></p>
+			<% end %>
+		</div>
+	<% end %>
+
+
+</div>

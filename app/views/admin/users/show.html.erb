@@ -1,2 +1,61 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<h2> User詳細</h2>
+
+<table>
+	<tr>
+		<td width="80px"> 氏名</td>
+		<td width="160px"> <%= @user.name %></td>
+	</tr>
+	<tr>
+		<td> 氏名カナ</td>
+		<td> <%= @user.name_kana %></td>
+	</tr>
+	<tr>
+		<td> 郵便番号</td>
+		<td> <%= @user.postal_code %></td>
+	</tr>
+	<tr>
+		<td> 住所</td>
+		<td> <%= @user.address %></td>
+	</tr>
+	<tr>
+		<td> tel</td>
+		<td> <%= @user.tel %></td>
+	</tr>
+	<tr>
+		<td> e-mail</td>
+		<td> <%= @user.email %></td>
+	</tr>
+</table>
+
+<hr>
+
+<h3> 注文一覧</h3>
+<table>
+	<tr>
+		<td style="width: 100px"> 注文ID</td>
+		<td style="width: 100px"> 注文日時</td>
+		<td style="width: 100px"> 発送状態</td>
+		<td style="width: 100px"> 発送状態変更</td>
+		<td style="width: 100px"> キャンセル状態</td>
+		<td style="width: 100px"></td>
+	</tr>
+	<% @orders.each do |order| %>
+		<tr>
+			<td> <%= order.id %></td>
+			<td> <%= simple_time(order.created_at) %></td>
+			<td> <% if order.shipment_status == 0 %> 準備中
+				 <% elsif order.shipment_status == 1 %> 発送済
+				 <% else %> 到着済<% end %> </td>
+			<td>
+				<%= form_for [:admin, order] do |f| %>
+					<%= f.select :shipment_status, options_for_select({"準備中": 0, "発送済": 1, "到着済": 2}, order.shipment_status), {}, onchange: "javascript: this.form.submit();" %>
+				<% end %>
+			</td>
+			<td> <% if order.cancel_request %> <span style="color: red"> キャンセル</span>
+				 <% else %> 未<% end %> </td>
+			<td> <%= link_to "削除", admin_order_path(order), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+		</tr>
+	<% end %>
+</table>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

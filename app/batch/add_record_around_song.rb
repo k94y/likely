@@ -1,0 +1,7 @@
+Genre.create(id: 1, name: "genre_a", image_id: "aaa")
+Label.create(id: 1, name: "label_a")
+Product.create(id: 1, label_id: 1, genre_id: 1, name: "product_a", price:1000, stock: 5, product_type: true)
+Disc.create(id: 1, product_id: 1, is_movie: false, disc_order: 1)
+Song.create(id: 1, name: "song_a", file: "aaa")
+Artist.create(id: 1, name: "artist_a", name_kana: "artist_kana_aaa")
+TrackRelation.create(id: 1, disc_id: 1, song_id: 1, artist_id: 1, track_order: 1)
