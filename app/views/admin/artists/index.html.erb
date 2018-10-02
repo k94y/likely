@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3 col-md-3">
-			<h4>アーティスト登録</h4>
+		<div class="col-lg-3 col-md-3 col-sm-4">
+			<h3 class="underline">アーティスト登録</h3>
 			<%= render 'admin/registration', var: @artist %>
 		</div>
-		<div class="col-lg-9 col-md-9">
-			<h4>アーティスト一覧</h4>
+		<div class="col-lg-9 col-md-9 col-sm-8">
+			<h3 class="underline">アーティスト一覧</h3>
 			<table>
 				<tr>
 					<td style="width: 100px"> image</td>
@@ -24,6 +24,7 @@
 					</tr>
 				<% end %>
 			</table>
+			<%= paginate @artists, class: "paginate" %>
 		</div>
 	</div>
 </div>

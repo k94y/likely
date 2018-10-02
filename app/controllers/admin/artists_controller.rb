@@ -1,7 +1,7 @@
 class Admin::ArtistsController < Admin::Base
   def index
     @artist = Artist.new
-    @artists = Artist.all
+    @artists = Artist.page(params[:page])
   end
 
   def show

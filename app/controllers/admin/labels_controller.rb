@@ -1,7 +1,7 @@
 class Admin::LabelsController < Admin::Base
   def index
     @label = Label.new
-    @labels = Label.all
+    @labels = Label.page(params[:page])
   end
 
   def show

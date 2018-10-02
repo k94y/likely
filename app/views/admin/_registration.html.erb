@@ -1,12 +1,13 @@
 <%= form_for [:admin, var] do |f| %>
-	<label> name</label>
-	<%= f.text_field :name %>
+	<label> name</label><br>
+	<%= f.text_field :name %><br><br>
 	<% if request.path_info == admin_artists_path %>
-		<label> name(カナ)</label>
-		<%= f.text_field :name_kana %>
+		<label> name(カナ)</label><br>
+		<%= f.text_field :name_kana %><br><br>
 	<% end %>
 	<% if request.path_info == admin_artists_path || request.path_info == admin_genres_path %>
-		<%= f.attachment_field :image %>
+		<label> 画像登録</label><br>
+		<%= f.attachment_field :image %><br>
 	<% end %>
 	<%= f.submit "Submit" %>
 <% end %>

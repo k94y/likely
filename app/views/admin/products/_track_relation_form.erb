@@ -2,8 +2,13 @@
     <td>
         <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
     </td>
-    <%= new_song_field(f, :song, {}) %>
-    <td><%= select_song_field("既存の楽曲から選択", f, :song, {})%></td>
-    <td><%= link_to_remove_field("track remove", f, :track_relations,{}) %></td>
+    <% if controller.action_name == "new" %>
+        <%= new_song_field(f, :song, {}) %>
+        <td><%= select_song_field("mode:新規曲選択", f, :song, "exist",{})%>
+    <% elsif controller.action_name == "edit" %>
+        <%= render "admin/products/select_song_form", f: f%>
+        <td><%= select_song_field("mode:既存曲選択", f, :song, "exist",{})%></td>
+    <% end %>
+    <td><%= link_to_remove_field("track remove", f, :track_relations, {}) %></td>
 </tr>
 
