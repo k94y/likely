@@ -1,5 +1,6 @@
 class Admin::OrdersController < Admin::Base
   def index
+    @orders = Order.all.order("id DESC")
   end
 
   def show
@@ -14,7 +15,7 @@ class Admin::OrdersController < Admin::Base
   def destroy
   	order = Order.find(params[:id])
   	order.destroy
-  	redirect_to admin_user_path(order.user)
+  	redirect_to admin_orders_path
   end
 
   private
