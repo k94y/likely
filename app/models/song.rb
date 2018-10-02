@@ -1,5 +1,6 @@
 class Song < ApplicationRecord
-	mount_uploader :file, AudioFileUploader
+	#テストのためコメントアウト
+	#mount_uploader :file, AudioFileUploader
 
 	has_many :track_relations
 	

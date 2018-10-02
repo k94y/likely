@@ -1,7 +1,7 @@
 class Admin::GenresController < Admin::Base
   def index
     @genre = Genre.new
-    @genres = Genre.all
+    @genres = Genre.page(params[:page])
   end
 
   def show
