@@ -1,5 +1,6 @@
 class Admin::ProductsController < Admin::Base
   def index
+    @products = Product.all
   end
 
   def new
@@ -39,6 +40,9 @@ class Admin::ProductsController < Admin::Base
   end
 
   def destroy
+    product = Product.find(params[:id])
+    product.destroy!
+    redirect_to admin_products_path
   end
 
   private

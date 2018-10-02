@@ -1,3 +1,11 @@
 // Place all the styles related to the user/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#sum-price{
+    font: {
+        size: 32px;
+        weight: bold;
+    }
+    color: orangered;
+}

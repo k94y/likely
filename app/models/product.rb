@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  has_many :discs
-  has_many :track_relations, through: :discs
+  has_many :discs, dependent: :destroy
+  has_many :track_relations, through: :discs, dependent: :destroy
   has_many :songs, through: :track_relations
   accepts_nested_attributes_for :discs, allow_destroy: true
   accepts_nested_attributes_for :track_relations, allow_destroy: true
