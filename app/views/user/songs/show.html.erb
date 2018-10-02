@@ -1,40 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<style>
-		.container{
-			<%# bootstrap適応のためこのクラスの設定を追加、css結合時競合する！！ %>
-			background-color: #888;
-			margin:0;
-			padding:0 70px;
-			width:auto;
-		}
 
-		.song-boxes{
-			display: inline;
-			float:left;
-		}
-		.song-box-image{
-			width:40%;
-			text-align: center;
-		}
-		.song-box-detail{
-			width:60%;
-			margin-top:60px;
-		}
-		.song-box-products{
-			width:90%;
-			margin:80px auto 0;
-		}
-		.song-font-head{
-			font-size: 64px;
-		}
-		.song-product-head{
-			display: inline-block;
-		}
-	</style>
-</head>
-<body>
+<style>
+	main{
+		<%# bootstrap適応のためこのクラスの設定を追加、css結合時競合する！！ %>
+		background-color: #888;
+		margin:0;
+		padding:0 70px;
+		width:auto;
+	}
+
+	.song-boxes{
+		display: inline;
+		float:left;
+	}
+	.song-box-image{
+		width:40%;
+		text-align: center;
+	}
+	.song-box-detail{
+		width:60%;
+		margin-top:60px;
+	}
+	.song-box-products{
+		width:90%;
+		margin:80px auto 0;
+	}
+	.song-font-head{
+		font-size: 64px;
+	}
+	.song-product-head{
+		display: inline-block;
+	}
+</style>
+
+<main>
 	<br>
 	<ol class="breadcrumb">
 		<li><%=link_to "Top","#" %></li>
@@ -76,5 +74,5 @@
 			<% end %>
 		<% end %>
 	<% end %>
-</body>
-</html>
+</main>
+
