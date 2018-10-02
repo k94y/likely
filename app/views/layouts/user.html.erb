@@ -11,7 +11,11 @@
   <div class="header-box clearfix">
     <div class="header-title"><%= link_to " Likely ", root_path %></div>
     <div class="header-search-box">
-      <p>search</p>
+      <%= form_tag searches_path, {method: :get} do %>
+        <%= select_tag :sel, options_for_select({"アーティスト": 1, "曲名": 2, "商品名": 3}, 1) %>
+        <%= text_field_tag :keyword %>
+        <%= submit_tag "検索" %>
+      <% end %>
     </div>
     <% if user_signed_in? %>
       <nav class="header-nav">
