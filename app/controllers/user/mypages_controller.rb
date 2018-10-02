@@ -8,22 +8,38 @@ class User::MypagesController < User::Base
 	end
 
 	def show
+		@user = User.find(current_user.id)
 	end
 
 	def edit
+		@user = User.find(current_user.id)
 	end
 
 	def create_info
 		info_user = User.find(current_user.id)
 		#info_user.address = "#{info_user.state}#{info_user.city}#{info_user.place}"
-		info_user.update(user_params)
-		redirect_to root_path
+		if info_user.update(user_params)
+		   redirect_to root_path
+		else
+			render :new
+		end
+
 	end
 
 	def update
+		@user = User.find(current_user.id)
+
+		if @user.update(user_params)
+		   redirect_to mypages_path(@user.id)
+	    else
+	    	render :edit
+	    end
 	end
 
 	def destroy
+		user = User.find(current_user.id)
+		user.destroy
+		redirect_to root_path
 	end
 
 	def user_params
