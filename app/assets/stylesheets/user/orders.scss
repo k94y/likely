@@ -2,10 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 #sum-price{
     font: {
         size: 32px;
         weight: bold;
     }
     color: orangered;
+}
+
+.order-list-head{
+    padding: 7px 12px;
+}
+
+.thumbnail-fix{
+    @extend .thumbnail;
+    margin-bottom: 0px;
+}
+
+.in-cancel{
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

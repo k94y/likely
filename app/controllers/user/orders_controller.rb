@@ -33,6 +33,9 @@ class User::OrdersController < User::Base
   end
 
   def update
+    order = Order.find(params[:id])
+    order.update!(cancel_request: true)
+    redirect_to orders_path
   end
 
 end
