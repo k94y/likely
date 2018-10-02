@@ -1,5 +1,6 @@
 class User::OrdersController < User::Base
   def index
+    @orders = current_user.orders.reverse
   end
 
   def new
