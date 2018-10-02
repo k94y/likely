@@ -1,2 +1,45 @@
-<h1>Admin::Tops#index</h1>
-<p>Find me in app/views/admin/tops/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .admin-top-table{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 100px;
+  }
+  .admin-top-td{
+    padding-top: 20px;
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <table class="admin-top-table">
+            <tbody>
+              <tr>
+                <td class="admin-top-td"><%= link_to "商品一覧", admin_products_path %></td>
+                <td class="admin-top-td"><%= link_to "顧客一覧", admin_users_path %></td>
+              </tr>
+              <tr>
+                <td class="admin-top-td"><%= link_to "アーティスト一覧", admin_artists_path %></td>
+                <td class="admin-top-td"><%= link_to "注文一覧", admin_orders_path %></td>
+              </tr>
+              <tr>
+                <td class="admin-top-td"><%= link_to "レーベル一覧", admin_labels_path %></td>
+                <td class="admin-top-td"><%= link_to "問い合わせ一覧", admin_contacts_path %></td>
+              </tr>
+              <tr>
+                <td class="admin-top-td"><%= link_to "ジャンル一覧", admin_genres_path %></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

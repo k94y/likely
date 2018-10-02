@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "shipment_status", default: 0
+    t.integer "shipment_status"
     t.boolean "cancel_request", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
     t.string "name"
     t.text "image_id"
     t.integer "price"
-    t.integer "stock", default: 0
-    t.integer "product_type", default: 0
+    t.integer "stock"
+    t.boolean "type", default: false
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -106,20 +106,18 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
-    t.text "file"
+    t.text "music_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "track_relations", force: :cascade do |t|
-    t.integer "disc_id"
     t.integer "song_id"
     t.integer "artist_id"
     t.integer "track_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_track_relations_on_artist_id"
-    t.index ["disc_id"], name: "index_track_relations_on_disc_id"
     t.index ["song_id"], name: "index_track_relations_on_song_id"
   end
 
