@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.container{
+			<%# bootstrap適応のためこのクラスの設定を追加、css結合時競合する！！ %>
+			background-color: #888;
+			margin:0;
+			padding:0 70px;
+			width:auto;
+		}
+
+		.song-boxes{
+			display: inline;
+			float:left;
+		}
+		.song-box-image{
+			width:40%;
+			text-align: center;
+		}
+		.song-box-detail{
+			width:60%;
+			margin-top:60px;
+		}
+		.song-box-products{
+			width:90%;
+			margin:80px auto 0;
+		}
+		.song-font-head{
+			font-size: 64px;
+		}
+		.song-product-head{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<br>
+	<ol class="breadcrumb">
+		<li><%=link_to "Top","#" %></li>
+		<li>
+			<%=link_to genre_path(@track.disc.product.genre.id) do %>
+				<span><%= @track.disc.product.genre.name %></span>
+			<% end %>
+		</li>
+		<li class="active">
+			<%= @track.song.name %>
+		</li>
+	</ol>
+	<div class="song-box clearfix">
+		<div class="song-box-image song-boxes">
+        	<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
+		</div>
+		<div class="song-box-detail song-boxes">
+			<h1 class="song-font-head"><%= @track.song.name %></h1><hr>
+			<h2><%= @track.artist.name %></h2><hr>
+		</div>
+	</div>
+	<% @track_list.each do |track_list| %>
+		<h1 class="song-font-head song-product-head"><%= track_list.disc.product.name %></h1>
+		<% if track_list.disc.product.stock == 0 %>
+			<h1 class="song-product-head"><span class="label label-danger">売り切れ</span></h1>
+		<% else %>
+			<h1 class="song-product-head"><span class="label label-success">在庫あり</span></h1>
+		<% end %>
+		<h1 class="song-product-head">¥ <%= track_list.disc.product.price.to_s(:delimited) %></h1>
+		<h1 class="song-product-head">
+			<%= link_to add_cartdetail_path, method: :post do %>
+				<button type="button" class="btn btn-primary btn-lg">カートに入れる</button>
+			<% end %>
+		</h1>
+		<hr>
+		<% track_list.disc.product.discs.each do |disc| %>
+			<% disc.track_relations.order("track_order").each do |track| %>
+				<p><%= track.track_order %>:<%= track.song.name %></p>
+			<% end %>
+		<% end %>
+	<% end %>
+</body>
+</html>
