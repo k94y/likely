@@ -25,11 +25,11 @@
 				<td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
 				<td>
 					<% if @order.shipment_status == 0 %>
-						<span>発送準備中</span>
+						<span>準備中</span>
 					<% elsif @order.shipment_status == 1 %>
-						<spna>発送中</spna>
+						<spna>発送済</spna>
 					<% elsif @order.shipment_status == 2 %>
-						<span>発送済み</span>
+						<span>到着済</span>
 					<% else %>
 						<span>Unknown</span>
 					<% end %>
