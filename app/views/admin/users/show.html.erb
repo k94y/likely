@@ -38,6 +38,7 @@
 		<td style="width: 100px"> 発送状態変更</td>
 		<td style="width: 100px"> キャンセル状態</td>
 		<td style="width: 100px"></td>
+		<td style="width: 100px"></td>
 	</tr>
 	<% @orders.each do |order| %>
 		<tr>
@@ -53,6 +54,7 @@
 			</td>
 			<td> <% if order.cancel_request %> <span style="color: red"> キャンセル</span>
 				 <% else %> 未<% end %> </td>
+			<td> <%= link_to "詳細", admin_order_path(order) %></td>
 			<td> <%= link_to "削除", admin_order_path(order), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
 		</tr>
 	<% end %>
