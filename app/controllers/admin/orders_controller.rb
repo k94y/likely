@@ -1,8 +1,11 @@
 class Admin::OrdersController < Admin::Base
   def index
+    @orders = Order.all.order("id DESC")
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def update
@@ -14,7 +17,7 @@ class Admin::OrdersController < Admin::Base
   def destroy
   	order = Order.find(params[:id])
   	order.destroy
-  	redirect_to admin_user_path(order.user)
+  	redirect_to admin_orders_path
   end
 
   private
