@@ -1,2 +1,60 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<style>
+	.admin-order-table{
+		width:65%;
+		margin:0 auto;
+		text-align: center;
+	}
+</style>
+<main>
+	<h1>注文詳細</h1>
+	<table class="table table-bordered admin-order-table">
+	    <thead>
+	        <tr>
+	            <th>注文id</th>
+	            <th>注文者id</th>
+	            <th>注文者氏名</th>
+	            <th>注文日時</th>
+	            <th>状態</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+			<tr>
+				<td><%= @order.id %></td>
+				<td><%= @order.user.id %></td>
+				<td><%= @order.user.name %></td>
+				<td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+				<td>
+					<% if @order.shipment_status == 0 %>
+						<span>発送準備中</span>
+					<% elsif @order.shipment_status == 1 %>
+						<spna>発送中</spna>
+					<% elsif @order.shipment_status == 2 %>
+						<span>発送済み</span>
+					<% else %>
+						<span>Unknown</span>
+					<% end %>
+				</td>
+			</tr>
+	    </tbody>
+	</table><br>
+	<table class="table admin-order-table">
+		<thead>
+			<tr>
+				<td>注文id</td>
+				<td>商品名</td>
+				<td>購入時価格</td>
+				<td>注文数</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @order_details.each do |detail| %>
+				<tr>
+					<td><%= detail.id %></td>
+					<td><%= detail.product.name %></td>
+					<td>¥ <%= detail.price.to_s(:delimited) %></td>
+					<td><%= detail.number %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</main>
