@@ -4,6 +4,8 @@ class Admin::OrdersController < Admin::Base
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   def update
