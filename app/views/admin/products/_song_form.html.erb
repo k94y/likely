@@ -1,6 +1,9 @@
- <td class='song-form'>
+ <td class='song-form col-xs-2'>
     <%= f.file_field :file, class: 'form-control'%>
 </td>
-<td class='song-form'>
+<td class='song-form col-xs-3'>
     <%= f.text_field :name, class: 'form-control' %>
+</td>
+<td class='song-form col-xs-3'>
+    <%= f.range_field :recommend_level, class: 'recommend', min: 1, max: 5, step: 1 %>
 </td>
