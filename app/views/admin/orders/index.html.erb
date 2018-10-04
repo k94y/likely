@@ -1,2 +1,42 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<style>
+	.admin-order-buttons{
+		width:60px;
+	}
+</style>
+<main>
+	<h1>注文履歴</h1>
+	<table class="table table-bordered">
+	    <thead>
+	        <tr>
+	            <th>注文id</th>
+	            <th>注文日時</th>
+	            <th>注文者id</th>
+	            <th>発送状態</th>
+	            <th>詳細</th>
+	            <th>削除</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    	<% @orders.each do |order| %>
+		        <tr>
+		        	<%= form_for order, :url => {:controller => "admin/orders", :action => "update", :id => order.id } do |f| %>
+			            <th><%= order.id %></th>
+			            <td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+			            <td><%= order.user.id %></td>
+			            <td><%= f.select :shipment_status, options_for_select([["準備中", 0], ["発送済", 1], ["到着済", 2]], order.shipment_status), {}, onchange: "javascript: this.form.submit();" %></td>
+			            <td class="admin-order-buttons">
+			            	<%= link_to admin_order_path(order.id) do %>
+				            	<button type="button" class="btn btn-primary btn-xs">詳細</button>
+			            	<% end %>
+			            </td>
+			            <td class="admin-order-buttons">
+			            	<%= link_to destroy_user_session_path, method: :delete, data: {confirm: "本当に削除しますか？" } do %>
+				            	<button type="button" class="btn btn-danger btn-xs">停止</button>
+			            	<% end %>
+			            </td>
+		            <% end %>
+		        </tr>
+	        <% end %>
+	    </tbody>
+	</table>
+</main>

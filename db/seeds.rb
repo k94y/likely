@@ -8,18 +8,18 @@
 
 
 
-# artist = Artist.new(:name => 'B\'z', :name_kana => 'ビーズ')
-# genre = Genre.new(:name => 'Rock')
-# label = Label.new(:name => 'Being')
+artist = Artist.new(:name => 'B\'z', :name_kana => 'ビーズ')
+genre = Genre.new(:name => 'Rock')
+label = Label.new(:name => 'Being')
 
 # # TrackRelation = TrackRelation.new()
 
-# artist.save!
-# genre.save!
-# label.save!
+artist.save!
+genre.save!
+label.save!
 
 # user = User.new(:email => 'b@b', :password => '111111',:admin => false, :name =>  'test', :name_kana => 'テスト', :postal_code => 'a', :address => 'a', :tel =>'000000000')
 # user.save!
 
-cart_detail = CartDetail.new(:user_id => 1, :product_id => 1, :number => 1)
-cart_detail.save!
+# cart_detail = CartDetail.new(:user_id => 1, :product_id => 1, :number => 1)
+# cart_detail.save!

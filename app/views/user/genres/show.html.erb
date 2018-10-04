@@ -1,2 +1,18 @@
-<h1>User::Genres#show</h1>
-<p>Find me in app/views/user/genres/show.html.erb</p>
+<div class="genre-mainimage-box">
+	<%= attachment_image_tag @genre, :image, :fill, 3000, 3000, class:"genre-mainimage" %>
+	<p class="genre-mainimage-comment"> <%= @genre.name %></p>
+</div>
+
+<div class="clearfix">
+	<% @songs.each do |s| %>
+
+		<% song = Product.find(s) %>
+        <% tr = TrackRelation.where(song_id: s).first %>
+		<div class="song-content">
+			<%= attachment_image_tag tr.disc.product, :image, :fill, 200, 200 %><br>
+			<%= link_to song.name, song_path(song), style:"font-size: 18px" %><br>
+			<%= tr.artist.name %>
+		</div>
+	<% end %>
+	<%= paginate @songs %>
+</div>

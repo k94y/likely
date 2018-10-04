@@ -1,4 +1,3 @@
-<td class='song-form'>
+<td class='song-form col-xs-8'>
     <%= f.select :song_id, @songs.map{|s| [s.track_relations[0].artist.name+" - "+s.name, s.id]},{}, class: 'form-control'  %>
 </td>
-<td class='song-form'></td>

@@ -1,2 +1,41 @@
-<h1>User::Orders#index</h1>
-<p>Find me in app/views/user/orders/index.html.erb</p>
+<h3>注文履歴</h3>
+<div class="col-xs-9">
+<% @orders.each do |order| %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-3 order-list-head">注文日　<%= order.created_at.strftime('%Y/%m/%d') %></div>
+                <div class="col-xs-3 order-list-head">合計 ¥<%= get_sum(order) %></div>
+                <div class="col-xs-3 order-list-head">配送状況：<%= get_shipment_status(order) %></div>
+                <div class="col-xs-3">
+                <% if order.cancel_request %>
+                    <span class="in-cancel">キャンセルリクエスト済</span>
+                <% elsif order.shipment_status == 0 %>
+                    <%= link_to  "キャンセル",  order_path(order),method: :patch, class: "btn btn-danger", "data-confirm" => "注文をキャンセルしますか？"%>
+                <% end %>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <th>ジャケット</th>
+                    <th>商品名</th>
+                    <th>値段</th>
+                    <th></th>
+                </thead>
+                <% order.order_details.each do |detail| %>
+                    <tr>
+                        <td class="col-xs-2"><%= attachment_image_tag detail.product, :image, :fill, 60, 60, class: "thumbnail-fix", fallback: "no_image.png"%></td>
+                        <td class="col-xs-3"><%= detail.product.name %></td>
+                        <td class="col-xs-2"><%= detail.price %></td>
+                        <td class="col-xs-5"></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+<% end %>
+</div>
+<div class="col-xs-3"></div>
