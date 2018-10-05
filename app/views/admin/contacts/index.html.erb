@@ -1,2 +1,27 @@
-<h1>Admin::Contacts#index</h1>
-<p>Find me in app/views/admin/contacts/index.html.erb</p>
+<sytle>
+</sytle>
+<main>
+	<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>お問い合わせい日時</th>
+            <th>返信</th>
+            <th>お問い合わせ者名</th>
+            <th>タイトル</th>
+            <th>会員状態</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<% @contacts.each do |contact| %>
+	        <tr>
+				<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+				<td><%= reply_status == false ? "未" : "済" %></td>
+				<td><%= contact.user.name %></td>
+				<td><%= contact.title %></td>
+				<td><%= contact.user_id == 0 ? "非会員" : "会員" %></td>
+				<td>[返信]</td>
+	        </tr>
+        <% end %>
+    </tbody>
+</table>
+</main>
