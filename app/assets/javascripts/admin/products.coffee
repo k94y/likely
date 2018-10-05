@@ -42,12 +42,20 @@ $(document).on 'turbolinks:load', ->
       insert_item = $(this).data('exist')
       $(this).parent().before(insert_item)
       $(this).data('mode', 'exist')
-      $(this).text('既存の楽曲から選択')
+      $(this).text('mode:既存曲選択')
     else if mode == "exist"
       console.log('exist')
       insert_item = $(this).data('new')
       $(this).parent().before(insert_item)
       $(this).data('mode', 'new')
-      $(this).text('新規楽曲を選択')
+      $(this).text('mode:新規曲選択')
 
     e.preventDefault()
+
+  $('form').on 'input', '.recommend', (e) ->
+    # console.log(e)
+    
+
+
+
+

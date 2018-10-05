@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_103713) do
+ActiveRecord::Schema.define(version: 2018_10_02_122844) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
     t.text "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "recommend_level", default: 0
   end
 
   create_table "track_relations", force: :cascade do |t|

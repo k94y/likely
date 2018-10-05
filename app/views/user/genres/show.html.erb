@@ -5,11 +5,13 @@
 
 <div class="clearfix">
 	<% @songs.each do |s| %>
-		<% product = Product.find(s[:product_id]) %>
+
+		<% song = Product.find(s) %>
+        <% tr = TrackRelation.where(song_id: s).first %>
 		<div class="song-content">
-			<%= attachment_image_tag product, :image, :fill, 200, 200 %><br>
-			<%= link_to s[:name], song_path(s[:id]), style:"font-size: 18px" %><br>
-			<%= s[:artist] %>
+			<%= attachment_image_tag tr.disc.product, :image, :fill, 200, 200 %><br>
+			<%= link_to song.name, song_path(song), style:"font-size: 18px" %><br>
+			<%= tr.artist.name %>
 		</div>
 	<% end %>
 	<%= paginate @songs %>

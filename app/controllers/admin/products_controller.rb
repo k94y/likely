@@ -54,7 +54,7 @@ class Admin::ProductsController < Admin::Base
         track_relations_attributes: [
           :id, :song_id, :artist_id, :disk_id, :track_order,  :_destroy,
           song_attributes: [
-            :id, :name, :file, :file_cache, :remove_file
+            :id, :name, :file, :recommend_level, :file_cache, :remove_file
           ]
         ]
       ]

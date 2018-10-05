@@ -11,15 +11,11 @@ class User::GenresController < User::Base
 	products.each do |product|
 		product.discs.each do |disc|
 			disc.track_relations.each do |t|
-				array.push({
-					id: t.song.id,
-					product_id: t.disc.product.id,
-					name: t.song.name,
-					artist: t.artist.name,
-				})
+				array.push(t.song.id)
 			end
 		end
 	end
+	array.uniq!
 	@songs = Kaminari.paginate_array(array).page(params[:page]).per(10)
 	# per(x)でページごとの表示件数をxに決定
 

@@ -1,4 +1,9 @@
 <div class="form-horizontal mt-3" role='form'>
+    <div class="row">
+        <div class="col-xs-8"><h2>商品情報編集</h2></div>
+        <div class="col-xs-4"><%= link_to  "一覧に戻る", admin_products_path, class: "btn btn-primary pull-right" %></div>
+    </div>
+    <div class="row">
     <%= form_for [:admin, @product] do |f| %>
         <div class="col-xs-3">
             <div class ="field form-group ">
@@ -71,8 +76,8 @@
             </div>
         </div>
         <div class="actions">
-            <%= f.submit "UPDATE", class:"btn btn-primary" %>
+            <%= f.submit "UPDATE", class:"btn btn-primary pull-right" %>
         </div>
-
     <% end %>
+    </div>
 </div>
