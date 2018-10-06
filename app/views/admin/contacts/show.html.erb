@@ -1,2 +1,27 @@
-<h1>Admin::Contacts#show</h1>
-<p>Find me in app/views/admin/contacts/show.html.erb</p>
+<style>
+	main{
+		width:50%;
+		margin: 0 auto;
+	}
+	.admin-contact-box-contents{
+		display: inline-block;
+		width:45%;
+	}
+</style>
+<main>
+	<div>
+		<div class="admin-contact-box-contents">お問い合わせ日時</div>
+		<div class="admin-contact-box-contents"><%= @contact.created_at %></div>
+	</div>
+	<div>
+		<div class="admin-contact-box-contents">お問い合わせ者氏名</div>
+		<div class="admin-contact-box-contents">
+			<%= @contact.user_id.blank? ? @contact.non_members.name : @contact.user.name %>
+		</div>
+	</div>
+	<div>
+		<div class="admin-contact-box-contents">タイトル</div>
+		<div class="admin-contact-box-contents"><%= @contact.title %></div>
+	</div>
+
+</main>

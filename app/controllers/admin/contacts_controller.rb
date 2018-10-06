@@ -4,6 +4,12 @@ class Admin::ContactsController < Admin::Base
   end
 
   def show
+  	@contact = Contact.find(params[:id])
+  	if @contact.user_id.blank?
+  		@user = NonMember.find(@contact.non_member_id)
+  	else
+  		@user = User.find(@contact.user_id)
+  	end
   end
 
   def update

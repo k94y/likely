@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :cart_details
   has_many :orders
-  # has_many :contacts #うまくいかないかも
+  #has_many :contacts #うまくいかないかも
 
 end
