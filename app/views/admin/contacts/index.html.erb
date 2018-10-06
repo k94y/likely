@@ -20,7 +20,7 @@
 					<% if contact.user_id.blank? %>
 						<%= @no_members.find_by(id: contact.non_member_id).name %>
 					<% else %>
-						<%= contact.user.name %>
+						<%= @user.find_by(id: contact.user_id).name %>
 					<% end %>
 				</td>
 				<td><%= contact.title %></td>
