@@ -13,6 +13,7 @@
 	            <th>注文id</th>
 	            <th>注文者id</th>
 	            <th>注文者氏名</th>
+	            <th>住所</th>
 	            <th>注文日時</th>
 	            <th>状態</th>
 	        </tr>
@@ -22,6 +23,11 @@
 				<td><%= @order.id %></td>
 				<td><%= @order.user.id %></td>
 				<td><%= @order.user.name %></td>
+				<td>
+					<%= @order.user.city %>
+					<%= @order.user.state %>
+					<%= @order.user.address %>
+				</td>
 				<td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
 				<td>
 					<% if @order.shipment_status == 0 %>
