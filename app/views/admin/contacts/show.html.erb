@@ -16,12 +16,33 @@
 	<div>
 		<div class="admin-contact-box-contents">お問い合わせ者氏名</div>
 		<div class="admin-contact-box-contents">
-			<%= @contact.user_id.blank? ? @contact.non_members.name : @contact.user.name %>
+			<%= @name %>
 		</div>
 	</div>
 	<div>
 		<div class="admin-contact-box-contents">タイトル</div>
 		<div class="admin-contact-box-contents"><%= @contact.title %></div>
 	</div>
+	<div>
+		<div class="admin-contact-box-contents">内容</div>
+		<div class="admin-contact-box-contents"><p><%= @contact.body %></p></div>
+	</div>
+	<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
+		<div>
+			<div class="admin-contact-box-contents">返信タイトル</div>
+			<div class="admin-contact-box-contents">
+				<%= f.text_field :title %>
+			</div>
+		</div>
+		<div>
+			<div class="admin-contact-box-contents">返信内容</div>
+			<div class="admin-contact-box-contents">
+				<%= f.text_area :body %>
+			</div>
+		</div>
+		<div>
+			<%= f.submit %>
+		</div>
+	<% end %>
 
 </main>

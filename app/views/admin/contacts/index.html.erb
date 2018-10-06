@@ -16,7 +16,13 @@
 	        <tr>
 				<td><%= contact.created_at.strftime("%Y/%m/%d %H:%M") %></td>
 				<td><%= contact.reply_status == false ? "未" : "済" %></td>
-				<td><%= contact.user_id.blank? ?  : contact.user.name %></td>
+				<td>
+					<% if contact.user_id.blank? %>
+						<%= @no_members.find_by(id: contact.non_member_id).name %>
+					<% else %>
+						<%= contact.user.name %>
+					<% end %>
+				</td>
 				<td><%= contact.title %></td>
 				<td><%= contact.user_id.blank? ? "非会員" : "会員" %></td>
 				<td>
