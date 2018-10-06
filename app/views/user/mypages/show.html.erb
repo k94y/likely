@@ -58,9 +58,9 @@
         </div>
         <div class="col-lg-4">
           <div class="mypage-link-box">
-            <%= link_to "会員情報編集", edit_mypages_path(current_user.id), class: "btn btn-default" %>
+            <%= link_to "会員情報編集", edit_mypages_path, class: "btn btn-default" %>
             <br>
-            <%= link_to "注文履歴", orders_path(current_user.id), class: "btn btn-default" %>
+            <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
             <br>
             <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
           </div>
