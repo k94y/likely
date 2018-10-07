@@ -1,10 +1,11 @@
 class Admin::LabelsController < Admin::Base
   def index
     @label = Label.new
-    @labels = Label.page(params[:page])
+    @labels = Label.page(params[:page]).per(20)
   end
 
   def show
+    @products = Product.where(label_id: params[:id]).page(params[:page]).per(20)
   end
 
   def create

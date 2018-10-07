@@ -6,7 +6,7 @@
 		</div>
 		<div class="col-lg-9 col-md-9">
 			<h4> レーベル一覧</h4>
-			<table>
+			<table class="table">
 				<tr>
 					<td style="width: 200px"> name</td>
 					<td style="width: 50px"></td>
@@ -14,9 +14,9 @@
 				</tr>
 				<% @labels.each do |label| %>
 					<tr>
-						<td> <%= label.name %></td>
-						<td> <%= link_to "編集", edit_admin_label_path(label) %></td>
-						<td> <%= link_to "削除", admin_label_path(label), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						<td> <%= link_to label.name, admin_label_path(label) %></td>
+						<td> <%= link_to edit_admin_label_path(label) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>
+						<td> <%= link_to admin_label_path(label), method: :delete, "data-confirm" => "本当に削除しますか？" do %> <button type="button" class="btn btn-danger btn-xs">削除</button><% end %></td>
 					</tr>
 				<% end %>
 			</table>

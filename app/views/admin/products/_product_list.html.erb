@@ -1,5 +1,6 @@
 <div class="row">
     <h2>商品一覧</h2>
+    <%= link_to "新規商品追加", new_admin_product_path, class: "btn btn-default pull-right" %>
     <table class="table">
         <thead>
             <th>ジャケット</th>
@@ -15,12 +16,12 @@
                     <td><%= attachment_image_tag p, :image, :fill, 70, 70, class: "img-rounded", fallback: "no_image.png"%></td>
                     <td class="table-text-contents"><%= p.name %></td>
                     <td class="table-text-contents"><%= p.stock %>枚</td>
-                    <td><%= link_to  "編集", edit_admin_product_path(p.id), class: "btn btn-success" %></td>
-                    <td>1</td>
-                    <td><%= link_to "削除", admin_product_path(p.id), method: :delete, class: "btn btn-danger", "data-confirm" => "この商品を本当に削除しますか?" %></td>
+                    <td><%= link_to  "編集", edit_admin_product_path(p.id), class: "btn btn-success btn-xs" %></td>
+                    <td><%= link_to "削除", admin_product_path(p.id), method: :delete, class: "btn btn-danger btn-xs", "data-confirm" => "この商品を本当に削除しますか?" %></td>
                 </tr>
             <% end %>
         </tbody>
     </table>
     <%= link_to "新規商品追加", new_admin_product_path, class: "btn btn-default pull-right" %>
+    <%= paginate products, class: "paginate" %>
 </div>

@@ -6,7 +6,7 @@
 		</div>
 		<div class="col-lg-9 col-md-9">
 			<h4> ジャンル一覧</h4>
-			<table class="admin-list-table">
+			<table class="table admin-list-table">
 				<tr>
 					<th style="width: 100px"> image</td>
 					<th style="width: 200px"> name</td>
@@ -15,10 +15,10 @@
 				</tr>
 				<% @genres.each do |genre| %>
 					<tr>
-						<td> <%= attachment_image_tag genre, :image, :fill, 150, 100, format: 'jpeg' %></td>
-						<td> <%= genre.name %></td>
-						<td> <%= link_to "編集", edit_admin_genre_path(genre) %></td>
-						<td> <%= link_to "削除", admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+						<td> <%= attachment_image_tag genre, :image, :fill, 100, 80, format: 'jpeg' %></td>
+						<td> <%= link_to genre.name, admin_genre_path(genre) %></td>
+						<td> <%= link_to edit_admin_genre_path(genre) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>
+						<td> <%= link_to admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？" do %> <button type="button" class="btn btn-danger btn-xs">削除</button><% end %></td>
 					</tr>
 				<% end %>
 			</table>

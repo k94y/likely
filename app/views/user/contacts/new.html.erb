@@ -1,86 +1,79 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .contact{
-      width:60%;
-      margin: 0 auto;
-    }
-    .contact-fields{
-      text-align: center;
-      margin-top: 30px;
-      font-size: 15px;
-    }
+<style>
+  .contact{
+    width:60%;
+    margin: 0 auto;
+  }
+  .contact-fields{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+  }
 
-    .contact-title{
-      text-align: center;
-      font-size: 48px;
-    }
-    .contact-field-sm{
-      width:30%;
-    }
-    .contact-field-lg{
-      width:30%;
-      height: 100px;
-    }
-    .contact-actions{
-      margin:0 auto;
-      width:50%;
-      text-align: center;
-      margin-top: 20px;
-    }
-  </style>
-</head>
+  .contact-title{
+    text-align: center;
+    font-size: 48px;
+  }
+  .contact-field-sm{
+    width:30%;
+  }
+  .contact-field-lg{
+    width:30%;
+    height: 100px;
+  }
+  .contact-actions{
+    margin:0 auto;
+    width:50%;
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
 
-<body>
-  <main class="contact">
-    <h2 class="contact-title">Contact</h2><hr>
-      <% if flash[:alert] %>
-        <p><%= flash[:alert] %></p>
-      <% end %>
-    <% if user_signed_in? %>
-      <%= form_for (@contact) do |f| %>
-        <div class="contact-field">
-          <div class="contact-fields">
-            <%= f.label :"タイトル" %><br />
-            <%= f.text_field :title, class: "contact-field-sm" %>
-          </div>
-          <div class="contact-fields">
-            <%= f.label :"お問い合わせ内容" %><br />
-            <%= f.text_area :body, class: "contact-field-lg" %>
-          </div>
-          <div class="contact-actions">
-            <%= f.submit "問い合わせる", class:"actions-block" %>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <%= form_for @contact do |f| %>
-        <div class="contact-field">
-         <%= fields_for @non_member do |nf| %>
-          <div class="contact-fields">
-            <%= f.label :"名前"  %><br>
-            <%= nf.text_field :name, class: "contact-field-sm"  %>
-          </div>
-          <div class="contact-fields">
-            <%= f.label :"Email"  %><br>
-            <%= nf.email_field :email, class: "contact-field-sm"  %>
-          </div>
-         <% end %>
-          <div class="contact-fields">
-            <%= f.label :"タイトル" %><br />
-            <%= f.text_field :title, class: "contact-field-sm" %>
-          </div>
-          <div class="contact-fields">
-            <%= f.label :"お問い合わせ内容" %><br />
-            <%= f.text_area :body, class: "contact-field-lg" %>
-          </div>
-          <div class="contact-actions">
-            <%= f.submit "問い合わせる", class:"actions-block" %>
-          </div>
-        </div>
-      <% end %>
+<main class="contact">
+  <h2 class="contact-title">Contact</h2><hr>
+    <% if flash[:alert] %>
+      <p><%= flash[:alert] %></p>
     <% end %>
-  </main>
-</body>
-</html>
+  <% if user_signed_in? %>
+    <%= form_for (@contact) do |f| %>
+      <div class="contact-field">
+        <div class="contact-fields">
+          <%= f.label :"タイトル" %><br />
+          <%= f.text_field :title, class: "contact-field-sm" %>
+        </div>
+        <div class="contact-fields">
+          <%= f.label :"お問い合わせ内容" %><br />
+          <%= f.text_area :body, class: "contact-field-lg" %>
+        </div>
+        <div class="contact-actions">
+          <%= f.submit "問い合わせる", class:"actions-block" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_for @contact do |f| %>
+      <div class="contact-field">
+       <%= fields_for @non_member do |nf| %>
+        <div class="contact-fields">
+          <%= f.label :"名前"  %><br>
+          <%= nf.text_field :name, class: "contact-field-sm"  %>
+        </div>
+        <div class="contact-fields">
+          <%= f.label :"Email"  %><br>
+          <%= nf.email_field :email, class: "contact-field-sm"  %>
+        </div>
+       <% end %>
+        <div class="contact-fields">
+          <%= f.label :"タイトル" %><br />
+          <%= f.text_field :title, class: "contact-field-sm" %>
+        </div>
+        <div class="contact-fields">
+          <%= f.label :"お問い合わせ内容" %><br />
+          <%= f.text_area :body, class: "contact-field-lg" %>
+        </div>
+        <div class="contact-actions">
+          <%= f.submit "問い合わせる", class:"actions-block" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</main>
