@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
+<style>
   table{
   	margin-top: 30px;
   }
   td{
-  	font-size: 20px;
+  	font-size: 14px;
   	padding-top: 15px;
   	padding-left: 100px;
   }
@@ -15,55 +12,55 @@
   	font-weight: bold;
   	padding-top: 30px;
   }
-.mypage-link-box{
-	margin-top: 30px;
-}
-.mypage-link-box .btn {
-	margin-top: 20px;
-	width: 200px;
-}
+  .mypage-link-box{
+  	margin-top: 30px;
+  }
+  .mypage-link-box .btn {
+  	margin-top: 20px;
+  	width: 200px;
+  }
+</style>
 
-  </style>
-</head>
 <div class="container">
-    <div class="row">
-      <div class="mypage-title">My Page</div>
-        <div class="col-lg-8">
-            <table>
-                    <tr>
-                        <td>氏名</td>
-                        <td><%= @user.name %></td>
-                    </tr>
-                    <tr>
-                        <td>フリガナ</td>
-                        <td><%= @user.name_kana %></td>
-                    </tr>
-                    <tr>
-                        <td>住所</td>
-                        <td>〒<%= @user.postal_code %>
-                        	&emsp;&emsp;<%= @user.state %>
-                        	<%= @user.city %>
-                        	<%= @user.address %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>電話番号</td>
-                        <td><%= @user.tel %></td>
-                    </tr>
-                    <tr>
-                        <td>E-mail</td>
-                        <td><%= @user.email %></td>
-                    </tr>
-            </table>
+  <div class="row">
+    <div class="mypage-title">My Page</div>
+      <div class="col-lg-6 col-md-6 col-sm-7">
+          <table class="table">
+            <tr>
+                <td>氏名</td>
+                <td><%= @user.name %></td>
+            </tr>
+            <tr>
+                <td>フリガナ</td>
+                <td><%= @user.name_kana %></td>
+            </tr>
+            <tr>
+                <td>住所</td>
+                <td>〒<%= @user.postal_code %>
+                	<br><%= @user.state %>
+                	<%= @user.city %>
+                	<%= @user.address %>
+                </td>
+            </tr>
+            <tr>
+                <td>電話番号</td>
+                <td><%= @user.tel %></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><%= @user.email %></td>
+            </tr>
+          </table>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+        <div class="mypage-link-box">
+          <%= link_to "会員情報編集", edit_mypages_path, class: "btn btn-default" %>
+          <br>
+          <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
+          <br>
+          <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
         </div>
-        <div class="col-lg-4">
-          <div class="mypage-link-box">
-            <%= link_to "会員情報編集", edit_mypages_path, class: "btn btn-default" %>
-            <br>
-            <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
-            <br>
-            <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
-          </div>
-        </div>
-    </div>
-</html>
+      </div>
+  </div>
+</div>
+

@@ -1,30 +1,28 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-4">
-			<h3 class="underline">アーティスト登録</h3>
-			<%= render 'admin/registration', var: @artist %>
-		</div>
-		<div class="col-lg-9 col-md-9 col-sm-8">
-			<h3 class="underline">アーティスト一覧</h3>
-			<table>
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-4">
+		<h3 class="underline">アーティスト登録</h3>
+		<%= render 'admin/registration', var: @artist %>
+	</div>
+	<div class="col-lg-9 col-md-9 col-sm-8">
+		<h3 class="underline">アーティスト一覧</h3>
+		<table class="table">
+			<tr>
+				<td style="width: 100px"> 画像</td>
+				<td style="width: 200px"> 名前</td>
+				<td style="width: 200px"> カナ</td>
+				<td style="width: 50px"></td>
+				<td style="width: 50px"></td>
+			</tr>
+			<% @artists.each do |artist| %>
 				<tr>
-					<td style="width: 100px"> 画像</td>
-					<td style="width: 200px"> 名前</td>
-					<td style="width: 200px"> カナ</td>
-					<td style="width: 50px"></td>
-					<td style="width: 50px"></td>
+					<td> <%= attachment_image_tag artist, :image, :fill, 100, 80, format: 'jpeg' %></td>
+					<td> <%= link_to artist.name, admin_artist_path(artist) %></td>
+					<td> <%= artist.name_kana %></td>
+					<td> <%= link_to edit_admin_artist_path(artist) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>
+					<td> <%= link_to admin_artist_path(artist), method: :delete, "data-confirm" => "本当に削除しますか？" do %> <button type="button" class="btn btn-danger btn-xs">削除</button><% end %></td>
 				</tr>
-				<% @artists.each do |artist| %>
-					<tr>
-						<td> <%= attachment_image_tag artist, :image, :fill, 150, 100, format: 'jpeg' %></td>
-						<td> <%= artist.name %></td>
-						<td> <%= artist.name_kana %></td>
-						<td> <%= link_to "編集", edit_admin_artist_path(artist) %></td>
-						<td> <%= link_to "削除", admin_artist_path(artist), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-					</tr>
-				<% end %>
-			</table>
-			<%= paginate @artists, class: "paginate" %>
-		</div>
+			<% end %>
+		</table>
+		<%= paginate @artists, class: "paginate" %>
 	</div>
 </div>
