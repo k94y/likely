@@ -32,11 +32,30 @@ class Admin::ProductsController < Admin::Base
 
   def update
     product = Product.find(params[:id])
-    if product.update!(product_params)
-      redirect_to admin_products_path
+    if params[:request]
+      stock = product.stock.to_i + params[:request].to_i
+      if product.update!(stock: stock.to_i)
+        redirect_to admin_products_path
+      else
+        redirect_to admin_products_path
+      end
     else
-      redirect_to new_admin_product_path
+      if product.update!(product_params)
+        redirect_to admin_products_path
+      else
+        redirect_to new_admin_product_path
+      end
     end
+
+  end
+
+  def manage_stock
+    p params[:request]
+    
+    product = Product.find(params[:id])
+    stock = product.stock.to_i + params[:request].to_i
+    product.update!(stock: stock)
+    redirect_to admin_products_path
   end
 
   def destroy
