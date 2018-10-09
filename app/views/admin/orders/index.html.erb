@@ -19,7 +19,7 @@
 	    <tbody>
 	    	<% @orders.each do |order| %>
 		        <tr>
-		        	<%= form_for order, :url => {:controller => "admin/orders", :action => "update", :id => order.id } do |f| %>
+		        	<%= form_for [:admin, order] do |f| %>
 			            <th><%= order.id %></th>
 			            <td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
 			            <td><%= order.user.id %></td>
@@ -40,3 +40,4 @@
 	    </tbody>
 	</table>
 </main>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

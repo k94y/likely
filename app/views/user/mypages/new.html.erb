@@ -1,90 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .sign-header{
-      height: 100px;
-      background-color: #444;
-      text-align: center;
-      color:white;
-      font-size: 80px;
-    }
-    .field{
-      margin: 30px auto;
-      width:400px;
-    }
-    main{
-      width:60%;
-      margin: 0 auto;
-    }
-    .fields{
-      margin:30px 0;
-    }
+<style>
+  .sign-header{
+    height: 100px;
+    background-color: #444;
+    text-align: center;
+    color:white;
+    font-size: 80px;
+  }
+  .field{
+    margin: 30px auto;
+    width:400px;
+  }
+  main{
+    width:60%;
+    margin: 0 auto;
+  }
+  .fields{
+    margin:30px 0;
+  }
 
-    .sign-title{
-      text-align: center;
-      font-size: 48px;
-    }
-    .sign-field{
-      height:35px;
-    }
-    .sign-field-lg{
-      width:80%;
-    }
-    .sign-field-sm{
-      width:40%;
-    }
-    .actions{
-      margin:0 auto;
-      width:50%;
-      text-align: center;
-    }
-    .actions-block{
-      display:block;
-      margin:15px auto;
-    }
-  </style>
-</head>
+  .sign-title{
+    text-align: center;
+    font-size: 48px;
+  }
+  .sign-field{
+    height:35px;
+  }
+  .sign-field-lg{
+    width:80%;
+  }
+  .sign-field-sm{
+    width:40%;
+  }
+  .actions{
+    margin:0 auto;
+    width:50%;
+    text-align: center;
+  }
+  .actions-block{
+    display:block;
+    margin:15px auto;
+  }
+</style>
 
-<body>
-  <main>
-    <h2 class="sign-title">Sign up</h2><hr>
-    <%= form_with model: @info ,url: mypages_info_path  do |f| %>
-      <div class="field">
-        <div class="fields">
-          <%= f.label :"氏名" %><br />
-          <%= f.text_field :name, class: "sign-field sign-field-lg" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"フリガナ" %><br>
-          <%= f.text_field :name_kana, class: "sign-field sign-field-lg" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"郵便番号" %><br>
-          <%= f.text_field :postal_code, class: "sign-field sign-field-lg" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"都道府県" %><br>
-          <%= f.text_field :state, class: "sign-field sign-field-sm" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"市区町村" %><br>
-          <%= f.text_field :city, class: "sign-field sign-field-lg" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"住所" %><br>
-          <%= f.text_field :address, class: "sign-field sign-field-lg" %>
-        </div>
-        <div class="fields">
-          <%= f.label :"電話番号" %><br>
-          <%= f.text_field :tel, class: "sign-field sign-field-sm" %>
-        </div>
-        <div class="actions">
-          <%= f.submit "完了", class:"actions-block" %>
-        </div>
+<main>
+  <h2 class="sign-title">Sign up</h2><hr>
+  <%= form_with model: @info ,url: mypages_info_path  do |f| %>
+    <div class="field">
+      <div class="fields">
+        <%= f.label :"氏名" %><br />
+        <%= f.text_field :name, class: "sign-field sign-field-lg" %>
       </div>
-    <% end %>
-  </main>
-  <%= link_to "delete",destroy_user_session_path, method: :delete %>
-</body>
-</html>
+      <div class="fields">
+        <%= f.label :"フリガナ" %><br>
+        <%= f.text_field :name_kana, class: "sign-field sign-field-lg" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"郵便番号" %><br>
+        <%= f.text_field :postal_code, class: "sign-field sign-field-lg" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"都道府県" %><br>
+        <%= f.text_field :state, class: "sign-field sign-field-sm" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"市区町村" %><br>
+        <%= f.text_field :city, class: "sign-field sign-field-lg" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"住所" %><br>
+        <%= f.text_field :address, class: "sign-field sign-field-lg" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"電話番号" %><br>
+        <%= f.text_field :tel, class: "sign-field sign-field-sm" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "完了", class:"actions-block" %>
+      </div>
+    </div>
+  <% end %>
+</main>

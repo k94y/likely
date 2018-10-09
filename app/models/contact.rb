@@ -1,5 +1,5 @@
 class Contact < ApplicationRecord
-  # belongs_to :user
+  #belongs_to :user
   # belongs_to :non_member
   # belongs_toあると弊害あるのではないか。
 

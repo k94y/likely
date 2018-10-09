@@ -1,10 +1,11 @@
 class Admin::GenresController < Admin::Base
   def index
     @genre = Genre.new
-    @genres = Genre.page(params[:page])
+    @genres = Genre.page(params[:page]).per(20)
   end
 
   def show
+    @products = Product.where(genre_id: params[:id]).page(params[:page]).per(20)
   end
 
   def create

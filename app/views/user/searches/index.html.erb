@@ -1,5 +1,5 @@
-        <% @res.each do |res| %>
-        <% if @sel == 2 %>
+<% @res.each do |res| %>
+    <% if @sel == 2 %>
         <div class="song-content">
             <% tr = TrackRelation.where(song_id: res.id).first %>
             <% product = Product.find(tr.disc.product_id) %>
@@ -7,7 +7,7 @@
             <%= link_to res.name, song_path(res), style:"font-size: 18px" %><br>
             <%= tr.artist.name %>
         </div>
-        <% else %>
+    <% else %>
         <div class="song-content">
             <% tr = TrackRelation.where(song_id: res[:id]).first %>
             <% product = Product.find(tr.disc.product_id) %>
@@ -15,6 +15,6 @@
             <%= link_to res[:name], song_path(res[:id]), style:"font-size: 18px" %><br>
             <%= tr.artist.name %>
         </div>
-        <% end %>
-
     <% end %>
+
+<% end %>

@@ -4,6 +4,7 @@
     <title>likely - admin</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
@@ -19,11 +20,18 @@
 	    </nav>
 	</div>
 	</header>
-  <div class="container">
+  <div class="container clearfix">
     <% content_for :content do %>
       <%= yield %>
     <% end %>
     <%= render template: "layouts/application" %>
   </div>
+<footer>
+  <div class="footer-box">
+    <div class="footer-text">
+      <%= link_to "お問い合わせ一覧", admin_contacts_path %>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
