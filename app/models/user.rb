@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :cart_details
-  has_many :orders
-  #has_many :contacts #うまくいかないかも
+  has_many :cart_details, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
 end

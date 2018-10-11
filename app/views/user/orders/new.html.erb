@@ -1,47 +1,50 @@
-<div class="col-xs-9">
+<% if @cart_details.present? %>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">届け先情報</div>
-        <div class="panel-body">
-            <ul class="list-group">
-                <li class="list-group-item"><div class="col-xs-2">郵便番号</div><div>〒<%= current_user.postal_code %></div><tr>
-                <li class="list-group-item"><div class="col-xs-2">住所</div><div><%= current_user.address %></div></tr>
-                <li class="list-group-item"><div class="col-xs-2">名前</div><div><%= current_user.name %></div></tr>
-            </ul>
+    <div class="col-xs-9">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">届け先情報</div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><div class="col-xs-2">郵便番号</div><div>〒<%= current_user.postal_code %></div><tr>
+                    <li class="list-group-item"><div class="col-xs-2">住所</div><div><%= current_user.address %></div></tr>
+                    <li class="list-group-item"><div class="col-xs-2">名前</div><div><%= current_user.name %></div></tr>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">注文詳細</div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <th>商品名</th>
+                        <th>注文数</th>
+                        <th>小計</th>
+                    </thead>
+                    <tbody>
+                    <% @cart_details.each do |c| %>
+                        <tr>
+                            <td><%= c.product.name %></td>
+                            <td><%= c.number %></td>
+                            <td><%= c.product.price * c.number %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">注文詳細</div>
-        <div class="panel-body">
-            <table class="table">
-                <thead>
-                    <th>商品名</th>
-                    <th>注文数</th>
-                    <th>小計</th>
-                </thead>
-                <tbody>
-                <% @cart_details.each do |c| %>
-                    <tr>
-                        <td><%= c.product.name %></td>
-                        <td><%= c.number %></td>
-                        <td><%= c.product.price * c.number %></td>
-                    </tr>
-                <% end %>
-                </tbody>
-            </table>
+    <div class="col-xs-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">合計金額</div>
+            <div class="panel-body" id="sum-price">¥ <%= add_dot_to_price(@sum) %></div>
         </div>
+        <%= link_to  "注文を確定", orders_path, method: :post, class: "btn btn-warning btn-block" %>
     </div>
-</div>
-<div class="col-xs-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">合計金額</div>
-        <div class="panel-body" id="sum-price">¥ <%= add_dot_to_price(@sum) %></div>
-    </div>
-    <%= link_to  "注文を確定", orders_path, method: :post, class: "btn btn-warning btn-block" %>
-</div>
 
+<% else %>
 
+<div style="text-align: center; margin: 30px"> カートに商品が存在しません</div>
 
-
-
+<% end %>
