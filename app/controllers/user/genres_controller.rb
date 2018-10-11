@@ -8,16 +8,16 @@ class User::GenresController < User::Base
 
   	array = []
   	products = Product.where(genre_id: params[:id])
-	products.each do |product|
-		product.discs.each do |disc|
-			disc.track_relations.each do |t|
-				array.push(t.song.id)
+		products.each do |product|
+			product.discs.each do |disc|
+				disc.track_relations.each do |t|
+					array.push(t.song)
+				end
 			end
 		end
-	end
-	array.uniq!
-	@songs = Kaminari.paginate_array(array).page(params[:page]).per(10)
-	# per(x)でページごとの表示件数をxに決定
+		array.uniq!
+		@songs = Kaminari.paginate_array(array).page(params[:page]).per(10)
+		# per(x)でページごとの表示件数をxに決定
 
   end
 end

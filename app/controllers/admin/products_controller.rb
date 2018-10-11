@@ -49,15 +49,6 @@ class Admin::ProductsController < Admin::Base
 
   end
 
-  def manage_stock
-    p params[:request]
-    
-    product = Product.find(params[:id])
-    stock = product.stock.to_i + params[:request].to_i
-    product.update!(stock: stock)
-    redirect_to admin_products_path
-  end
-
   def destroy
     product = Product.find(params[:id])
     product.destroy!
