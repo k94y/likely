@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_103713) do
+ActiveRecord::Schema.define(version: 2018_10_02_122844) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -31,13 +31,15 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "user_id"
-    t.string "non_member_id"
+    t.integer "user_id"
+    t.integer "non_member_id"
     t.string "title"
     t.text "body"
     t.boolean "reply_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["non_member_id"], name: "index_contacts_on_non_member_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
   create_table "songs", force: :cascade do |t|
     t.string "name"
     t.text "file"
+    t.integer "recommend_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -137,13 +140,13 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
-    t.string "name"
-    t.string "name_kana"
-    t.string "postal_code"
-    t.string "state"
-    t.string "city"
-    t.string "address"
-    t.string "tel"
+    t.string "name", default: "", null: false
+    t.string "name_kana", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "city", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "tel", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -5,14 +5,51 @@
 
 <div class="clearfix">
 	<% @songs.each do |s| %>
-
-		<% song = Product.find(s) %>
-        <% tr = TrackRelation.where(song_id: s).first %>
+		<% tr = TrackRelation.where(song_id: s.id).first %>
 		<div class="song-content">
-			<%= attachment_image_tag tr.disc.product, :image, :fill, 200, 200 %><br>
-			<%= link_to song.name, song_path(song), style:"font-size: 18px" %><br>
-			<%= tr.artist.name %>
+			<div class="jacket-cover">
+				<%= attachment_image_tag tr.disc.product, :image, :fallback => "no_image.png", :size => "200x200" ,:class=>"jacket"%>
+				<%= audio_tag(s.file.url) %>
+			</div>
+			<p></p>
+			<p class="text-center word-wrap"><%= link_to s.name+" / "+tr.artist.name, song_path(tr), style:"font-size: 18px" %></p>
 		</div>
 	<% end %>
 	<%= paginate @songs %>
 </div>
+
+<script>
+	$(".jacket").on('click', (e)=>{
+		// jqueryでも次の要素取得できるけど, jqueryだとaudio_tagの扱いが特別らしい
+		// なので、pure jsで記述
+		let target = $(e.target)
+		let target_parent = $(e.target).parent(".jacket-cover")
+		target_parent.addClass('jacket-cover-pause')
+		target.addClass('playing')
+		let audio = e.target.nextElementSibling
+		audio.volume = 0
+		audio.play()
+		// 再生の頭と終わりのボリューム調整
+		audio.addEventListener("timeupdate", ()=>{
+			if(audio.currentTime > audio.duration*0.4 && audio.volume > 0){
+				// 小数の調整(入れないと0.49999とかになって死ぬ)
+				audio.volume = Math.round(audio.volume*100)/100
+				if(audio.volume >= 0.1)audio.volume -= 0.1
+				if(audio.volume == 0 && audio.play){
+					audio.pause()
+					audio.currentTime = 0
+					target_parent.removeClass('jacket-cover-pause')
+					target.removeClass('playing')
+				}
+			} else if (audio.volume < 1){
+				audio.volume += 0.25
+			}
+		})
+		// end時に再生位置を頭に修正
+		audio.addEventListener("ended", ()=>{
+			audio.currentTime = 0
+			target_parent.removeClass('jacket-cover-pause')
+			target.removeClass('playing')
+		})
+	})
+</script>

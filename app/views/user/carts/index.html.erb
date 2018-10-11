@@ -11,8 +11,16 @@
 					<div class="cart-detail-1">
 						<p style="font-size: 18px"><%= cart.product.name %></p>
 						<span> 数量</span>
+						<% if cart.product.stock < cart.number %>
+							<br><span style="color: red">カートに入れた個数に対して在庫が不足しています。</span>
+							<% cart.update(number: cart.product.stock) %>
+						<% end %>
 						<%= form_for cart, :url => { :controller => "user/carts", :action => "update", :id => cart.id } do |f| %>
-							<%= f.select :number, options_for_select([1, 2, 3, 4, 5, 6], cart.number), {}, onchange: "javascript: this.form.submit();" %>
+							<% if cart.product.stock > 6 %>
+								<%= f.select :number, options_for_select(1..6, cart.number), {}, onchange: "javascript: this.form.submit();" %>
+							<% else %>
+								<%= f.select :number, options_for_select(1..cart.product.stock, cart.number), {}, onchange: "javascript: this.form.submit();" %>
+							<% end %>
 						<% end %>
 						<p style="color:red; font-size:24px">¥ <%= (cart.product.price * cart.number).to_s(:delimited) %></p>
 					</div>
