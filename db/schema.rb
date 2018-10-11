@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_103713) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "user"
-    t.string "non_member"
+    t.string "user_id"
+    t.string "non_member_id"
     t.string "title"
     t.text "body"
     t.boolean "reply_status", default: false
