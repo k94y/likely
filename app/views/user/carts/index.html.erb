@@ -1,43 +1,42 @@
 <% if @carts.present? %>
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-			<% total = 0 %>
-			<% @carts.each do |cart| %>
-				<div class="cart clearfix">
-					<div class="cart-image">
-						<%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpg' %>
-					</div>
-					<div class="cart-detail-1">
-						<p style="font-size: 18px"><%= cart.product.name %></p>
-						<span> 数量</span>
-						<%= form_for cart, :url => { :controller => "user/carts", :action => "update", :id => cart.id } do |f| %>
-							<%= f.select :number, options_for_select([1, 2, 3, 4, 5, 6], cart.number), {}, onchange: "javascript: this.form.submit();" %>
-						<% end %>
-						<p style="color:red; font-size:24px">¥ <%= (cart.product.price * cart.number).to_s(:delimited) %></p>
-					</div>
-					<div class="cart-detail-2">
-						<p>在庫残り <%= cart.product.stock %> 個</p>
-						<%= link_to "削除", cart_path(cart), method: :delete %>
-					</div>
-
-					<% total += cart.product.price * cart.number %>
+<div class="row">
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+		<% total = 0 %>
+		<% @carts.each do |cart| %>
+			<div class="cart clearfix">
+				<div class="cart-image">
+					<%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpg' %>
 				</div>
-			<% end %>
-		</div>
+				<div class="cart-detail-1">
+					<p style="font-size: 18px"><%= cart.product.name %></p>
+					<span> 数量</span>
+					<%= form_for cart, :url => { :controller => "user/carts", :action => "update", :id => cart.id } do |f| %>
+						<%= f.select :number, options_for_select([1, 2, 3, 4, 5, 6], cart.number), {}, onchange: "javascript: this.form.submit();" %>
+					<% end %>
+					<p style="color:red; font-size:24px">¥ <%= (cart.product.price * cart.number).to_s(:delimited) %></p>
+				</div>
+				<div class="cart-detail-2">
+					<p>在庫残り <%= cart.product.stock %> 個</p>
+					<%= link_to "削除", cart_path(cart), method: :delete %>
+				</div>
 
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<div class="cart">
-				<p> 合計金額：</p>
-				<p style="color:red; font-size:24px"> ¥ <%= total.to_s(:delimited) %></p>
+				<% total += cart.product.price * cart.number %>
 			</div>
-			<div class="cart-choice">
-				<%= link_to "レジへ進む", new_order_path, class: "btn btn-warning cart-btn" %><br>
-				<%= link_to "ショッピングを続ける", root_path %>
-			</div>
+		<% end %>
+	</div>
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+		<div class="cart">
+			<p> 合計金額：</p>
+			<p style="color:red; font-size:24px"> ¥ <%= total.to_s(:delimited) %></p>
+		</div>
+		<div class="cart-choice">
+			<%= link_to "レジへ進む", new_order_path, class: "btn btn-warning cart-btn" %><br>
+			<%= link_to "ショッピングを続ける", root_path %>
 		</div>
 	</div>
 </div>
+
 
 <% else %>
 <div style="text-align: center; margin: 30px"> カートに商品が存在しません</div>
