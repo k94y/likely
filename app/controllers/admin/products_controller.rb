@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::Base
-  load_and_authorize_resource
+  load_and_authorize_resource class: false
 
   def index
     @products = Product.page(params[:page]).per(20)

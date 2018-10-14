@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :cart_details, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  enum role: { admin: true, customer: false}
+  enum admin: { admin: true, customer: false }
 end

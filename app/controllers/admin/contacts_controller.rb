@@ -1,5 +1,5 @@
 class Admin::ContactsController < Admin::Base
-	load_and_authorize_resource
+	load_and_authorize_resource class: false
   def index
   	@contacts = Contact.all.order("id desc")
   	@no_members = NonMember.all

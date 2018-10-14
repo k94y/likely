@@ -1,5 +1,4 @@
 class Admin::ArtistsController < Admin::Base
-  load_and_authorize_resource
   def index
     @artist = Artist.new
     @artists = Artist.page(params[:page]).per(20)
