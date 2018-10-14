@@ -1,51 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-  .admin-top-table{
-    width: 100%;
-    font-size: 20px;
-    margin-top: 100px;
-  }
-  .admin-top-td{
-    padding-top: 20px;
-  }
-  </style>
-</head>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <thead>
+        <th>商品関係</th>
+        <th>顧客関係</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="admin-top-td"><%= link_to "商品一覧", admin_products_path , :class => "btn btn-default btn-block btn-lg"%></td>
+          <td class="admin-top-td"><%= link_to "顧客一覧", admin_users_path, :class => "btn btn-default btn-block btn-lg" %></td>
+        </tr>
+        <tr>
+          <td class="admin-top-td"><%= link_to "商品新規登録", new_admin_product_path, :class => "btn btn-default btn-block btn-lg" %></td>
+          <td class="admin-top-td"><%= link_to "注文一覧", admin_orders_path, :class => "btn btn-default btn-block btn-lg" %></td>
+        </tr>
+        <tr>
+          <td class="admin-top-td"><%= link_to "アーティスト一覧", admin_artists_path, :class => "btn btn-default btn-block btn-lg" %></td>
+          <td class="admin-top-td"><%= link_to "問い合わせ一覧", admin_contacts_path, :class => "btn btn-default btn-block btn-lg" %></td>
+        </tr>
+        <tr>
+          <td class="admin-top-td"><%= link_to "レーベル一覧", admin_labels_path, :class => "btn btn-default btn-block btn-lg" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="admin-top-td"><%= link_to "ジャンル一覧", admin_genres_path, :class => "btn btn-default btn-block btn-lg" %></td>
+          <td></td>
+        </tr>
 
-<body>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <table class="admin-top-table">
-            <tbody>
-              <tr>
-                <td class="admin-top-td"><%= link_to "商品一覧", admin_products_path %></td>
-                <td class="admin-top-td"><%= link_to "顧客一覧", admin_users_path %></td>
-              </tr>
-              <tr>
-                <td class="admin-top-td"><%= link_to "商品新規登録", new_admin_product_path %></td>
-                <td class="admin-top-td"><%= link_to "注文一覧", admin_orders_path %></td>
-              </tr>
-              <tr>
-                <td class="admin-top-td"><%= link_to "アーティスト一覧", admin_artists_path %></td>
-                <td class="admin-top-td"><%= link_to "問い合わせ一覧", admin_contacts_path %></td>
-              </tr>
-              <tr>
-                <td class="admin-top-td"><%= link_to "レーベル一覧", admin_labels_path %></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="admin-top-td"><%= link_to "ジャンル一覧", admin_genres_path %></td>
-                <td></td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </main>
-</body>
-</html>
+      </tbody>
+    </table>
+  </div>
+</div>
+ 

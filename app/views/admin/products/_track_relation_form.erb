@@ -1,4 +1,5 @@
 <tr>
+    <td class="col-xs-1"><%= f.number_field :track_order, class: 'form-control', min: 1%></td> 
     <td class="col-xs-2">
         <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
     </td>

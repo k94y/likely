@@ -13,15 +13,27 @@
         <tbody>
             <% products.each do |p| %>
                 <tr>
-                    <td><%= attachment_image_tag p, :image, :fill, 70, 70, class: "img-rounded", fallback: "no_image.png"%></td>
-                    <td class="table-text-contents"><%= p.name %></td>
-                    <td class="table-text-contents"><%= p.stock %>枚</td>
-                    <td><%= link_to  "編集", edit_admin_product_path(p.id), class: "btn btn-success btn-xs" %></td>
-                    <td><%= link_to "削除", admin_product_path(p.id), method: :delete, class: "btn btn-danger btn-xs", "data-confirm" => "この商品を本当に削除しますか?" %></td>
+                    <td class="col-xs-1"><%= attachment_image_tag p, :image, class: "img-rounded", fallback: "no_image.png", size: "50x50"%></td>
+                    <td class="col-xs-2 table-text-contents"><%= p.name %></td>
+                    <td class="col-xs-1 table-text-contents"><%= p.stock %>枚</td>
+                    <td class="col-xs-4">
+                        <%= form_with url: admin_product_path(p), method: :patch do |f| %>
+                            <div class="col-xs-5">
+                                <div class="input-group">
+                                    <%= f.number_field :request, placeholder: 10, class: "form-control", min: 1, max: 100 %>
+                                    <span class="input-group-addon">枚</span>
+                                </div>
+                            </div>
+                            <div class="col-xs-7">
+                                <%= f.submit "発注", class: "btn btn-default","data-confirm"=>"発注すると3日経過して、届いたことになります。" %>
+                            </div>
+                        <% end %>
+                    </td>
+                    <td class="col-xs-1"><%= link_to "編集", edit_admin_product_path(p.id), class: "btn btn-success" %></td>
+                    <td class="col-xs-1"><%= link_to "削除", admin_product_path(p.id), method: :delete, class: "btn btn-danger", "data-confirm" => "この商品を本当に削除しますか?" %></td>
                 </tr>
             <% end %>
         </tbody>
     </table>
-    <%= link_to "新規商品追加", new_admin_product_path, class: "btn btn-default pull-right" %>
     <%= paginate products, class: "paginate" %>
 </div>

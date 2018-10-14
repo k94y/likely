@@ -1,26 +1,19 @@
-<div class="field disc-new">
+<div class="new-disc-form">
     <div class='form-group'>
-        <div class='col-xs-2'>
-            <%= f.label :disc_order, class:'control-label' %>
+        <div class='col-xs-1'>
+            <%= f.label :disc_order, "Disc", class:'control-label pull-right' %>
         </div>
-        <div class='col-xs-3'>
+        <div class='col-xs-1'>
             <%= f.number_field :disc_order, class: 'form-control' %>
         </div>
-        <div class='col-xs-5'></div>
+        <div class='col-xs-8'></div>
         <div class='col-xs-2'>
             <%= link_to_remove_field("remove disc", f, :discs, {})%>
         </div>
     </div>
-
     <%= link_to_add_field("track add", f, :track_relations, {}) %>
+
     <table class="table">
-        <thead>
-            <th>Artist</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </thead>
         <tbody>
             <% f.object.track_relations.each do |tr| %>
                 <%= f.fields_for :track_relations, tr, child_index: tr.object_id do |builder| %>

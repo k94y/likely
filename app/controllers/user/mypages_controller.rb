@@ -30,7 +30,7 @@ class User::MypagesController < User::Base
 		@user = User.find(current_user.id)
 
 		if @user.update(user_params)
-		   redirect_to mypages_path(@user.id)
+		   redirect_to mypages_path
 	    else
 	    	render :edit
 	    end

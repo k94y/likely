@@ -1,48 +1,36 @@
-<style>
-	main{
-		width:50%;
-		margin: 0 auto;
-	}
-	.admin-contact-box-contents{
-		display: inline-block;
-		width:45%;
-	}
-</style>
-<main>
-	<div>
-		<div class="admin-contact-box-contents">お問い合わせ日時</div>
-		<div class="admin-contact-box-contents"><%= @contact.created_at %></div>
+<div>
+	<div class="admin-contact-box-contents">お問い合わせ日時</div>
+	<div class="admin-contact-box-contents"><%= @contact.created_at %></div>
+</div>
+<div>
+	<div class="admin-contact-box-contents">お問い合わせ者氏名</div>
+	<div class="admin-contact-box-contents">
+		<%= @name %>
 	</div>
+</div>
+<div>
+	<div class="admin-contact-box-contents">タイトル</div>
+	<div class="admin-contact-box-contents"><%= @contact.title %></div>
+</div>
+<div>
+	<div class="admin-contact-box-contents">内容</div>
+	<div class="admin-contact-box-contents"><p><%= @contact.body %></p></div>
+</div>
+<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
 	<div>
-		<div class="admin-contact-box-contents">お問い合わせ者氏名</div>
+		<div class="admin-contact-box-contents">返信タイトル</div>
 		<div class="admin-contact-box-contents">
-			<%= @name %>
+			<%= f.text_field :title %>
 		</div>
 	</div>
 	<div>
-		<div class="admin-contact-box-contents">タイトル</div>
-		<div class="admin-contact-box-contents"><%= @contact.title %></div>
+		<div class="admin-contact-box-contents">返信内容</div>
+		<div class="admin-contact-box-contents">
+			<%= f.text_area :body %>
+		</div>
 	</div>
 	<div>
-		<div class="admin-contact-box-contents">内容</div>
-		<div class="admin-contact-box-contents"><p><%= @contact.body %></p></div>
+		<%= f.submit %>
 	</div>
-	<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
-		<div>
-			<div class="admin-contact-box-contents">返信タイトル</div>
-			<div class="admin-contact-box-contents">
-				<%= f.text_field :title %>
-			</div>
-		</div>
-		<div>
-			<div class="admin-contact-box-contents">返信内容</div>
-			<div class="admin-contact-box-contents">
-				<%= f.text_area :body %>
-			</div>
-		</div>
-		<div>
-			<%= f.submit %>
-		</div>
-	<% end %>
+<% end %>
 
-</main>

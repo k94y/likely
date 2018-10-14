@@ -9,7 +9,7 @@ class User::SearchesController < User::Base
       artists.each do |art|
         tr = TrackRelation.where(artist_id: art.id)
         tr.each do |t|
-          array << {id: t.song.id, name: t.song.name}
+          array << t.song
         end
       end
       @res = array.uniq
@@ -23,7 +23,7 @@ class User::SearchesController < User::Base
       products.each do |pro|
         pro.discs.each do |d|
           d.track_relations.each do |tr|
-              array << {id: tr.song.id, name: tr.song.name}
+              array << tr.song
           end
         end
       end

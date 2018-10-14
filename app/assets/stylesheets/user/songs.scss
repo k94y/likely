@@ -1,3 +1,32 @@
 // Place all the styles related to the user/songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.show-h-margin-fix{
+    margin-bottom: 0;
+}
+
+.product-head{
+    @extend .table;
+    margin-bottom: 0;
+}
+
+.product-head > thead > tr > th,
+.product-content > thead > tr > th {
+    border: none;
+}
+
+
+.product-content{
+    @extend .table;
+    margin-top: 5px;
+}
+
+.product-content .lead{
+    @extend .lead;
+    margin-bottom: 0;
+
+}

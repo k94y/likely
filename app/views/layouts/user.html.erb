@@ -8,13 +8,13 @@
   </head>
 <body>
   <header>
-  <div class="header-box clearfix">
+  <div class="container clearfix">
     <div class="header-title"><%= link_to " Likely ", root_path %></div>
     <div class="header-search-box">
-      <%= form_tag searches_path, {method: :get} do %>
-        <%= select_tag :sel, options_for_select({"アーティスト": 1, "曲名": 2, "商品名": 3}, @sel) %>
-        <%= text_field_tag :keyword, @keyword %>
-        <%= submit_tag "検索" %>
+      <%= form_with url: searches_path do |f| %>
+          <%= f.select :sel, {"アーティスト": 1, "曲名": 2, "商品名": 3}, {:selected => params[:sel].to_s} , :class => "navbar-form-select"%>
+          <%= f.text_field :keyword, class: "navbar-form-control", value: params[:keyword] %>
+          <%= f.submit "検索", class: "navbar-form-submit"%>
       <% end %>
     </div>
     <% if request.path_info != 'users/sign_in' && request.path_info != 'users/sign_up' %>
@@ -41,18 +41,22 @@
     <% end %>
   </div>
   </header>
-  <div class="container">
-    <% content_for :content do %>
-      <%= yield %>
-    <% end %>
-    <%= render template: "layouts/application" %>
-  </div>
-<footer>
-  <div class="footer-box">
-    <div class="footer-text">
-      <%= link_to "お問い合わせはこちら", new_contacts_path %>
+  <% if flash[:notice] %>
+    <div class="notice"> <%= flash[:notice] %></div>
+  <% end %>
+  
+  <!-- main-container -->
+  <% content_for :content do %>
+    <%= yield %>
+  <% end %>
+  <%= render template: "layouts/application" %>
+  
+  <footer>
+    <div class="footer-box">
+      <div class="footer-text">
+        <%= link_to "お問い合わせはこちら", new_contacts_path %>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>
