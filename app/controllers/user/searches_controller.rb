@@ -23,7 +23,7 @@ class User::SearchesController < User::Base
       products.each do |pro|
         pro.discs.each do |d|
           d.track_relations.each do |tr|
-              array << t.song
+              array << tr.song
           end
         end
       end

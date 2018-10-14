@@ -54,7 +54,6 @@ $(document).on 'turbolinks:load', ->
 
   $('form').on 'input', '.recommend', (e) ->
     # console.log(e)
-    
 
 
 

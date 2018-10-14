@@ -1,31 +1,8 @@
-<style>
-  table{
-  	margin-top: 30px;
-  }
-  td{
-  	font-size: 14px;
-  	padding-top: 15px;
-  	padding-left: 100px;
-  }
-  .mypage-title{
-  	font-size: 50px;
-  	font-weight: bold;
-  	padding-top: 30px;
-  }
-  .mypage-link-box{
-  	margin-top: 30px;
-  }
-  .mypage-link-box .btn {
-  	margin-top: 20px;
-  	width: 200px;
-  }
-</style>
-
 <div class="container">
-  <div class="row">
+    <div class="row">
     <div class="mypage-title">My Page</div>
-      <div class="col-lg-6 col-md-6 col-sm-7">
-          <table class="table">
+        <div class="col-lg-6 col-md-6 col-sm-7">
+            <table class="table">
             <tr>
                 <td>氏名</td>
                 <td><%= @user.name %></td>
@@ -37,9 +14,9 @@
             <tr>
                 <td>住所</td>
                 <td>〒<%= @user.postal_code %>
-                	<br><%= @user.state %>
-                	<%= @user.city %>
-                	<%= @user.address %>
+                    <br><%= @user.state %>
+                    <%= @user.city %>
+                    <%= @user.address %>
                 </td>
             </tr>
             <tr>
@@ -50,17 +27,16 @@
                 <td>E-mail</td>
                 <td><%= @user.email %></td>
             </tr>
-          </table>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
-        <div class="mypage-link-box">
-          <%= link_to "会員情報編集", edit_mypages_path, class: "btn btn-default" %>
-          <br>
-          <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
-          <br>
-          <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
+            </table>
         </div>
-      </div>
-  </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">
+        <div class="mypage-link-box">
+            <%= link_to "会員情報編集", edit_mypages_path, class: "btn btn-default" %>
+            <br>
+            <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
+            <br>
+            <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
+        </div>
+        </div>
+    </div>
 </div>
-

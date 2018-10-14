@@ -1,9 +1,9 @@
-<div class="genre-mainimage-box">
+<div class="container-fluid genre-mainimage-box">
 	<%= attachment_image_tag @genre, :image, :fill, 3000, 3000, class:"genre-mainimage" %>
 	<p class="genre-mainimage-comment"> <%= @genre.name %></p>
 </div>
 
-<div class="clearfix">
+<div class="container">
 	<% @songs.each do |s| %>
 		<% tr = TrackRelation.where(song_id: s.id).first %>
 		<div class="song-content">
@@ -39,7 +39,7 @@
 
 				// 小数の調整(入れないと0.49999とかになって死ぬ)
 				audio.volume = Math.round(audio.volume*100)/100
-				if(audio.volume >= 0.1)audio.volume -= 0.1
+				if(audio.volume >= 0.05)audio.volume -= 0.05
 
 
 
