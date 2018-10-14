@@ -48,6 +48,11 @@ header {
 	font-weight: bold;
 	line-height: 80px;
 	font-family: 'Athelas';
+	width: 162px;
+}
+.header-nav{
+	float: right;
+	width: 163px;
 }
 
 .header-title a, .header-nav a{
@@ -55,9 +60,6 @@ header {
 	text-decoration: none;
 }
 
-.header-nav{
-	float: right;
-}
 .header-nav-list{
 	float: left;
 	padding-right: 30px;
@@ -65,14 +67,15 @@ header {
 	line-height: 80px;
 	font-size: 20px;
 }
+
 .header-box a {
 	text-decoration: none;
 	color: white;
 }
 .header-search-box{
 	float: left;
-	width: 40vw;
-	margin: 23px 5vw  23px 7vw;
+	width: calc(100% - 325px - 10vw);
+	margin: 23px 4vw  23px 6vw;
 }
 
 .navbar-form-select{
