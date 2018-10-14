@@ -39,18 +39,19 @@
     <% end %>
   </div>
   </header>
-  <div class="container">
-    <% content_for :content do %>
-      <%= yield %>
-    <% end %>
-    <%= render template: "layouts/application" %>
-  </div>
-<footer>
-  <div class="footer-box">
-    <div class="footer-text">
-      <%= link_to "お問い合わせはこちら", new_contacts_path %>
+
+  <!-- main-container -->
+  <% content_for :content do %>
+    <%= yield %>
+  <% end %>
+  <%= render template: "layouts/application" %>
+  
+  <footer>
+    <div class="footer-box">
+      <div class="footer-text">
+        <%= link_to "お問い合わせはこちら", new_contacts_path %>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 </body>
 </html>

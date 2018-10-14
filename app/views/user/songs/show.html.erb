@@ -1,57 +1,59 @@
-<br>
-<ol class="breadcrumb">
-	<li><%=link_to "Top","#" %></li>
-	<li>
-		<%=link_to genre_path(@track.disc.product.genre.id) do %>
-			<span><%= @track.disc.product.genre.name %></span>
-		<% end %>
-	</li>
-	<li class="active">
-		<%= @track.song.name %>
-	</li>
-</ol>
-<div class="row">
-	<div class="col-xs-1" ></div>
-	<div class="col-xs-4">
-		<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
-	</div>
-	<div class="col-xs-6">
-		<h2><p class="small">song name</p><%= @track.song.name %></h2><hr>
-		<h2><p class="small">artist name</p><%= @track.artist.name %></h2><hr>
-	</div>
-	<div class="col-xs-1" ></div>
-</div>
-<% @products.each do |product| %>
-	<table class="product-head">
-		<thead>
-			<th class="col-xs-7"><h3 class="show-h-margin-fix"><p class="small">product name</p><%= product.name %></h3></th>
-			<th class="col-xs-2"><h4 class="show-h-margin-fix">¥ <%= product.price.to_s(:delimited) %></h4></th>
-			<% if product.stock == 0 %>
-				<th class="col-xs-3"><h4 class="text-danger show-h-margin-fix">売り切れ<h4></th>
-			<% else %>
-				<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
-				<th class="col-xs-2"><%= link_to "カートに入れる", add_cartdetail_path, method: :post, :class=>"btn btn-primary"%></th>
+<div class="container">
+	<ol class="breadcrumb">
+		<li><%=link_to "Top","#" %></li>
+		<li>
+			<%=link_to genre_path(@track.disc.product.genre.id) do %>
+				<span><%= @track.disc.product.genre.name %></span>
 			<% end %>
-		</thead>
-	</table>
-	<table class="product-content">
-		<% product.discs.each do |disc| %>
+		</li>
+		<li class="active">
+			<%= @track.song.name %>
+		</li>
+	</ol>
+	<div class="row">
+		<div class="col-xs-1" ></div>
+		<div class="col-xs-4">
+			<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
+		</div>
+		<div class="col-xs-6">
+			<h2><p class="small">song name</p><%= @track.song.name %></h2><hr>
+			<h2><p class="small">artist name</p><%= @track.artist.name %></h2><hr>
+		</div>
+		<div class="col-xs-1" ></div>
+	</div>
+
+	<% @products.each do |product| %>
+		<table class="product-head">
 			<thead>
-				<th><p class="lead">Disc <%= disc.disc_order %></p></th>
+				<th class="col-xs-7"><h3 class="show-h-margin-fix"><p class="small">product name</p><%= product.name %></h3></th>
+				<th class="col-xs-2"><h4 class="show-h-margin-fix">¥ <%= product.price.to_s(:delimited) %></h4></th>
+				<% if product.stock == 0 %>
+					<th class="col-xs-3"><h4 class="text-danger show-h-margin-fix">売り切れ<h4></th>
+				<% else %>
+					<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
+					<th class="col-xs-2"><%= link_to "カートに入れる", add_cartdetail_path, method: :post, :class=>"btn btn-primary"%></th>
+				<% end %>
 			</thead>
-			<tbody>
-			<% disc.track_relations.order("track_order").each do |track| %>
-				<tr>
-					<td class="col-xs-1 text-center"><%= track.track_order %></td>
-					<td class="col-xs-3"><%= track.song.name %></td>
-					<td class="col-xs-1"><input type="button" value="試聴" class="btn btn-primary btn-xs audition"/><%= audio_tag(track.song.file.url) %></td>
-					<td class="col-xs-7"></td>
-				</tr>
+		</table>
+		<table class="product-content">
+			<% product.discs.each do |disc| %>
+				<thead>
+					<th><p class="lead">Disc <%= disc.disc_order %></p></th>
+				</thead>
+				<tbody>
+				<% disc.track_relations.order("track_order").each do |track| %>
+					<tr>
+						<td class="col-xs-1 text-center"><%= track.track_order %></td>
+						<td class="col-xs-3"><%= track.song.name %></td>
+						<td class="col-xs-1"><input type="button" value="試聴" class="btn btn-primary btn-xs audition"/><%= audio_tag(track.song.file.url) %></td>
+						<td class="col-xs-7"></td>
+					</tr>
+				<% end %>
+				</tbody>
 			<% end %>
-			</tbody>
-		<% end %>
-	</table>
-<% end %>
+		</table>
+	<% end %>
+</div>
 
 <script>
 	$(".audition").on('click', (e)=>{

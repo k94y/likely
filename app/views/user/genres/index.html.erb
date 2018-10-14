@@ -1,8 +1,8 @@
-<div class="main-image">
+<div class="container-fluid main-image">
 	<p> Find Your Favorite Music.</p>
 </div>
 
-<div class="content clearfix">
+<div class="container">
 	<% @genres.each do |genre| %>
 		<div class="genre-image">
 			<%= link_to genre_path(genre) do %>
