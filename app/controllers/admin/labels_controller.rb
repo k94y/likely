@@ -1,4 +1,5 @@
 class Admin::LabelsController < Admin::Base
+  load_and_authorize_resource
   def index
     @label = Label.new
     @labels = Label.page(params[:page]).per(20)

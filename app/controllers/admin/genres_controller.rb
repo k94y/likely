@@ -1,4 +1,5 @@
 class Admin::GenresController < Admin::Base
+  load_and_authorize_resource
   def index
     @genre = Genre.new
     @genres = Genre.page(params[:page]).per(20)

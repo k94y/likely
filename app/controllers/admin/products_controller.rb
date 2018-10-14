@@ -1,4 +1,6 @@
 class Admin::ProductsController < Admin::Base
+  load_and_authorize_resource
+
   def index
     @products = Product.page(params[:page]).per(20)
   end
