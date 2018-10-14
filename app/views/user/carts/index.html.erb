@@ -1,26 +1,35 @@
 <div class="container">
 <% if @carts.present? %>
-<div class="row">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-		<% total = 0 %>
-		<% @carts.each do |cart| %>
-			<div class="cart clearfix">
-				<div class="cart-image">
-					<%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpg' %>
+	<div class="row">
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<% total = 0 %>
+			<% @carts.each do |cart| %>
+				<div class="cart clearfix">
+					<div class="cart-image">
+						<%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpg' %>
+					</div>
+					<div class="cart-detail-1">
+						<p style="font-size: 18px"><%= cart.product.name %></p>
+						<span> 数量</span>
+						<% if cart.product.stock < cart.number %>
+							<br><span style="color: red">カートに入れた個数に対して在庫が不足しています。</span>
+							<% cart.update(number: cart.product.stock) %>
+						<% end %>
+						<%= form_for cart, :url => { :controller => "user/carts", :action => "update", :id => cart.id } do |f| %>
+							<% if cart.product.stock > 6 %>
+								<%= f.select :number, options_for_select(1..6, cart.number), {}, onchange: "javascript: this.form.submit();" %>
+							<% else %>
+								<%= f.select :number, options_for_select(1..cart.product.stock, cart.number), {}, onchange: "javascript: this.form.submit();" %>
+							<% end %>
+						<% end %>
+						<p style="color:red; font-size:24px">¥ <%= (cart.product.price * cart.number).to_s(:delimited) %></p>
+					</div>
+					<div class="cart-detail-2">
+						<p>在庫残り <%= cart.product.stock %> 個</p>
+						<%= link_to "削除", cart_path(cart), method: :delete %>
+					</div>
+					<% total += cart.product.price * cart.number %>
 				</div>
-				<div class="cart-detail-1">
-					<p style="font-size: 18px"><%= cart.product.name %></p>
-					<span> 数量</span>
-					<%= form_for cart, :url => { :controller => "user/carts", :action => "update", :id => cart.id } do |f| %>
-						<%= f.select :number, options_for_select([1, 2, 3, 4, 5, 6], cart.number), {}, onchange: "javascript: this.form.submit();" %>
-					<% end %>
-					<p style="color:red; font-size:24px">¥ <%= (cart.product.price * cart.number).to_s(:delimited) %></p>
-				</div>
-				<div class="cart-detail-2">
-					<p>在庫残り <%= cart.product.stock %> 個</p>
-					<%= link_to "削除", cart_path(cart), method: :delete %>
-				</div>
-
 				<% total += cart.product.price * cart.number %>
 			</div>
 		<% end %>

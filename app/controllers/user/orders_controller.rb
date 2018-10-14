@@ -13,23 +13,39 @@ class User::OrdersController < User::Base
   end
 
   def create
-    order = Order.new
-    order.user_id = current_user.id
-    if order.save!
-      current_user.cart_details.each do |c|
-        order_detail = OrderDetail.new
-        order_detail.order_id = order.id
-        order_detail.product_id = c.product.id
-        order_detail.price = c.product.price
-        order_detail.number = c.number
-        order_detail.save!
-      end
+      order = Order.new
+      order.user_id = current_user.id
+      if order.save!
+        bool = 0
+        current_user.cart_details.each do |c|
+          c.product.with_lock do    #悲観的ロック
+            if c.product.stock >= c.number
+              order_detail = OrderDetail.new
+              order_detail.order_id = order.id
+              order_detail.product_id = c.product.id
+              order_detail.price = c.product.price
+              order_detail.number = c.number
+              order_detail.save!
+              order_detail.product.update(stock: order_detail.product.stock - order_detail.number)
+            else
+              bool += 1
+            end
+          end
+        end
 
-      CartDetail.where(user_id: current_user.id).destroy_all
-      redirect_to root_path, notice: "注文を確定しました"
-    else
-      redirect_to new_order_path, alert: "注文に失敗しました、再度確定ボタンをお願いします。"
-    end
+        if bool == 0
+          CartDetail.where(user_id: current_user.id).destroy_all
+          redirect_to root_path, notice: "注文を確定しました"
+        else
+          order.order_details.each do |o|
+            o.product.update(stock: o.product.stock + o.number)
+          end
+          order.destroy
+          redirect_to carts_path, notice: "注文に失敗しました"
+        end
+      else
+        redirect_to carts_path, notice: "注文に失敗しました"
+      end
   end
 
   def update

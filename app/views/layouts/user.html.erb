@@ -39,7 +39,10 @@
     <% end %>
   </div>
   </header>
-
+  <% if flash[:notice] %>
+    <div class="notice"> <%= flash[:notice] %></div>
+  <% end %>
+  
   <!-- main-container -->
   <% content_for :content do %>
     <%= yield %>
