@@ -50,11 +50,25 @@ header {
 	font-family: 'Athelas';
 	width: 162px;
 }
+
+.admin-header-title{
+	float: left;
+	font-size: 60px;
+	font-weight: bold;
+	line-height: 80px;
+	font-family: 'Athelas';
+}
+
 .header-nav{
 	float: right;
 	width: 163px;
 }
 
+.admin-header-nav{
+	float: right;
+}
+
+.admin-header-title a,.admin-header-nav a,
 .header-title a, .header-nav a{
 	color: #fafafa;
 	text-decoration: none;
