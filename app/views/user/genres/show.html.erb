@@ -25,40 +25,47 @@
 
 		let target = $(e.target)
 		let target_parent = $(e.target).parent(".jacket-cover")
-
-		target_parent.addClass('jacket-cover-pause')
-		target.addClass('playing')
-
 		let audio = e.target.nextElementSibling
-		audio.volume = 0
-		audio.play()
 
-		// 再生の頭と終わりのボリューム調整
-		audio.addEventListener("timeupdate", ()=>{
-			if(audio.currentTime > audio.duration*0.4 && audio.volume > 0){
-
-				// 小数の調整(入れないと0.49999とかになって死ぬ)
-				audio.volume = Math.round(audio.volume*100)/100
-				if(audio.volume >= 0.05)audio.volume -= 0.05
-
-
-
-				if(audio.volume == 0 && audio.play){
-					audio.pause()
-					audio.currentTime = 0
-					target_parent.removeClass('jacket-cover-pause')
-					target.removeClass('playing')
-				}
-			} else if (audio.volume < 1){
-				audio.volume += 0.25
-			}
-		})
-
-		// end時に再生位置を頭に修正
-		audio.addEventListener("ended", ()=>{
-			audio.currentTime = 0
-			target_parent.removeClass('jacket-cover-pause')
+		if(target.hasClass('playing')){
+			audio.volume = 0
+			audio.pause()
 			target.removeClass('playing')
-		})
+			target_parent.removeClass('jacket-cover-pause')
+		} else {
+			target.addClass('playing')
+			target_parent.addClass('jacket-cover-pause')
+
+			audio.volume = 0
+			audio.play()
+
+			// 再生の頭と終わりのボリューム調整
+			audio.addEventListener("timeupdate", ()=>{
+				if(audio.currentTime > audio.duration*0.4 && audio.volume > 0){
+
+					// 小数の調整(入れないと0.49999とかになって死ぬ)
+					audio.volume = Math.round(audio.volume*100)/100
+					if(audio.volume >= 0.05)audio.volume -= 0.05
+
+
+
+					if(audio.volume == 0 && audio.play){
+						audio.pause()
+						audio.currentTime = 0
+						target_parent.removeClass('jacket-cover-pause')
+						target.removeClass('playing')
+					}
+				} else if (audio.volume < 1){
+					audio.volume += 0.25
+				}
+			})
+
+			// end時に再生位置を頭に修正
+			audio.addEventListener("ended", ()=>{
+				audio.currentTime = 0
+				target_parent.removeClass('jacket-cover-pause')
+				target.removeClass('playing')
+			})
+		}
 	})
 </script>
