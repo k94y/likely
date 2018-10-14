@@ -1,16 +1,101 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    header{
+      background-color: #444444;
+    }
+    body{
+      margin:0;
+    }
+    .header-box{
+      background-color: #444444;
+      height: 100px;
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .header-title{
+      float: left;
+      padding-left: 20px;
+      font-size: 70px;
+      padding-left: 20px;
+      line-height: 100px;
+      color: white;
+      font-family: 'Athelas';
+    }
+    .sign-form-boxes{
+      border: 1px solid #F5F5F5;
+      background-color: #F5F5F5;
+    }
+    .sign-form-box{
+      margin:100px auto 0;
+      width:50%;
+    }
+    .sign-form-top{
+      text-align: center;
+      font-size: 15px;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-form-size{
+      width:300px;
+      height: 40px;
+      font-size:15px;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-form-btn{
+      width:30%;
+      height: 30px;
+      margin: 0 auto;
+      margin-top:30px;
+      margin-bottom: 30px;
+      font-size: 15px;
+      display: block;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+    .field{
+      width:300px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-back{
+      display: block;
+      width:250px;
+      text-align: center;
+      margin:20px auto;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </style>
+</head>
+<body>
+  <header>
+  	<div class="header-box">
+  	  <div class="header-title">Likely</div>
+  	</div>
+  </header>
+  <div class="sign-form-box">
+  	<div class="sign-form-top sign-form-boxes">
+	  <h1>Forgot your password?</h1>
+		<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  	<%= devise_error_messages! %>
+	  <div class="field">
+	    <%= f.label :email %><br />
+	    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: :"sign-form-size" %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Send Email",class: :"sign-form-btn", style: :"background-color:#ccc" %>
+	  </div>
+	<% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  	<%= link_to "Back",new_session_path(resource_name),class: :"sign-back" %>
+</div>
+</body>
