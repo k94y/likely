@@ -17,25 +17,27 @@
         <%= submit_tag "検索" %>
       <% end %>
     </div>
-    <% if user_signed_in? %>
-      <nav class="header-nav">
+    <% if request.path_info != 'users/sign_in' && request.path_info != 'users/sign_up' %>
+      <% if user_signed_in? %>
+        <nav class="header-nav">
+            <ul>
+                <li class="header-nav-list"><%= link_to " My Page ", mypages_path, class: "btn btn-info" %></li>
+                <li class="header-nav-list"><%= link_to " ", carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+                <li class="header-nav-list"><%=link_to "logout",destroy_user_session_path,method: :delete %></li>
+            </ul>
+        </nav>
+      <% else %>
+        <nav class="header-nav">
           <ul>
-              <li class="header-nav-list"><%= link_to " My Page ", mypages_path, class: "btn btn-info" %></li>
-              <li class="header-nav-list"><%= link_to " ", carts_path, class: "glyphicon glyphicon-shopping-cart" %></li>
-              <li class="header-nav-list"><%=link_to "logout",destroy_user_session_path,method: :delete %></li>
+            <li class="header-nav-list">
+              <%=link_to "signup",new_user_registration_path  %>
+            </li>
+            <li class="header-nav-list">
+              <%=link_to "login",new_user_session_path  %>
+            </li>
           </ul>
-      </nav>
-    <% else %>
-      <nav class="header-nav">
-        <ul>
-          <li class="header-nav-list">
-            <%=link_to "signup",new_user_registration_path  %>
-          </li>
-          <li class="header-nav-list">
-            <%=link_to "login",new_user_session_path  %>
-          </li>
-        </ul>
-      </nav>
+        </nav>
+      <% end %>
     <% end %>
   </div>
   </header>
