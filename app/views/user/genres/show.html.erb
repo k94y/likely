@@ -61,4 +61,15 @@
 			target.removeClass('playing')
 		})
 	})
+
+	$('.playing').on('click', (e)=>{
+		let target = $(e.target)
+		let target_parent = $(e.target).parent(".jacket-cover")
+
+		target_parent.removeClass('jacket-cover-pause')
+		target.removeClass('playing')
+
+		let audio = e.target.nextElementSibling
+		audio.pause()
+	})
 </script>
