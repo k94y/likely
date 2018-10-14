@@ -25,13 +25,20 @@
 	<% @products.each do |product| %>
 		<table class="product-head">
 			<thead>
-				<th class="col-xs-7"><h3 class="show-h-margin-fix"><p class="small">product name</p><%= product.name %></h3></th>
+				<th class="col-xs-6"><h3 class="show-h-margin-fix"><p class="small">product name</p><%= product.name %></h3></th>
 				<th class="col-xs-2"><h4 class="show-h-margin-fix">¥ <%= product.price.to_s(:delimited) %></h4></th>
 				<% if product.stock == 0 %>
-					<th class="col-xs-3"><h4 class="text-danger show-h-margin-fix">売り切れ<h4></th>
+					<th class="col-xs-4"><h4 class="text-danger show-h-margin-fix">売り切れ</h4></th>
 				<% else %>
 					<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
-					<th class="col-xs-2"><%= link_to "カートに入れる", add_cartdetail_path, method: :post, :class=>"btn btn-primary"%></th>
+					<%= form_tag add_cartdetail_path, method: :post do %>
+						<% if product.stock > 6 %>
+							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..6) %></th>
+						<% else %>
+							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..product.stock) %></th>
+						<% end %>
+						<th class="col-xs-2"><%= submit_tag "カートに入れる", :class=>"btn btn-primary"%></th>
+					<% end %>
 				<% end %>
 			</thead>
 		</table>
@@ -50,6 +57,7 @@
 					</tr>
 				<% end %>
 				</tbody>
+			<% end %>
 		</table>
 	<% end %>
 </div>
