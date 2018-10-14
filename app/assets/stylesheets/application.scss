@@ -42,23 +42,19 @@ header {
 	background-color: #444444;
 }
 
-.header-box{
-	background-color: #444444;
-	height: 100px;
-	width: 1200px;
-	margin: 0 auto;
-}
-
 .header-title{
 	float: left;
-	padding-left: 20px;
-	font-size: 70px;
+	font-size: 60px;
 	font-weight: bold;
-	padding-left: 20px;
-	line-height: 100px;
-	color: white;
+	line-height: 80px;
 	font-family: 'Athelas';
 }
+
+.header-title a, .header-nav a{
+	color: #fafafa;
+	text-decoration: none;
+}
+
 .header-nav{
 	float: right;
 }
@@ -66,7 +62,7 @@ header {
 	float: left;
 	padding-right: 30px;
 	list-style: none;
-	line-height: 100px;
+	line-height: 80px;
 	font-size: 20px;
 }
 .header-box a {
@@ -75,8 +71,47 @@ header {
 }
 .header-search-box{
 	float: left;
-	height: 30px;
-    margin: 40px 0 0 250px;
+	width: 40vw;
+	margin: 23px 5vw  23px 7vw;
+}
+
+.navbar-form-select{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	appearance: none;
+	
+	@extend .form-control;
+	box-sizing: border-box;
+	float: left;
+	width: 110px;
+	border: 1px solid #aaa;
+	border-radius: 4px 0 0 4px / 4px 0 0 4px;
+	transition: 50ms ease;
+}
+
+.navbar-form-select:hover{
+	opacity: 0.7;
+}
+
+.navbar-form-select:active{
+	opacity: 0.6;
+}
+
+.navbar-form-submit{
+	@extend .btn;
+	@extend .btn-default;
+	box-sizing: border-box;
+	display: inline-box;
+	width: 60px;
+	border-radius: 0 4px 4px 0;
+}
+
+.navbar-form-control{
+	@extend .form-control;
+	width: calc(40vw - 110px - 60px);
+	float: left;
+	box-sizing: border-box;
+	border-radius: 0;
 }
 
 /*footer*/
