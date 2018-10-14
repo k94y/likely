@@ -30,19 +30,18 @@
 					</div>
 					<% total += cart.product.price * cart.number %>
 				</div>
-				<% total += cart.product.price * cart.number %>
 			</div>
 		<% end %>
-	</div>
 
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-		<div class="cart">
-			<p> 合計金額：</p>
-			<p style="color:red; font-size:24px"> ¥ <%= total.to_s(:delimited) %></p>
-		</div>
-		<div class="cart-choice">
-			<%= link_to "レジへ進む", new_order_path, class: "btn btn-warning cart-btn" %><br>
-			<%= link_to "ショッピングを続ける", root_path %>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			<div class="cart">
+				<p> 合計金額：</p>
+				<p style="color:red; font-size:24px"> ¥ <%= total.to_s(:delimited) %></p>
+			</div>
+			<div class="cart-choice">
+				<%= link_to "レジへ進む", new_order_path, class: "btn btn-warning cart-btn" %><br>
+				<%= link_to "ショッピングを続ける", root_path %>
+			</div>
 		</div>
 	</div>
 </div>
