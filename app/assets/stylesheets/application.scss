@@ -111,7 +111,7 @@ header {
 
 .navbar-form-control{
 	@extend .form-control;
-	width: calc(40vw - 110px - 60px);
+	width: calc(100% - 110px - 60px);
 	float: left;
 	box-sizing: border-box;
 	border-radius: 0;
