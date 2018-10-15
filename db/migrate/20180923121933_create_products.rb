@@ -1,4 +1,4 @@
-class CreateProducts < ActiveRecord::Migration[5.0]
+class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.references :label, foreign_key: true

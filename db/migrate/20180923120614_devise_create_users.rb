@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsers < ActiveRecord::Migration[5.0]
+class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       ## Database authenticatable

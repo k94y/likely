@@ -1,4 +1,4 @@
-class CreateTrackRelations < ActiveRecord::Migration[5.0]
+class CreateTrackRelations < ActiveRecord::Migration[5.2]
   def change
     create_table :track_relations, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.references :disc, foreign_key: true
