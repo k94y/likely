@@ -1,28 +1,26 @@
-<div class="container">
-	<div class="row">
-		<div class="col-lg-3 col-md-3">
-			<h4>ジャンル登録</h4>
-			<%= render 'admin/registration', var: @genre %>
-		</div>
-		<div class="col-lg-9 col-md-9">
-			<h4> ジャンル一覧</h4>
-			<table class="table admin-list-table">
+<div class="row">
+	<div class="col-lg-3 col-md-3">
+		<h4>ジャンル登録</h4>
+		<%= render 'admin/registration', var: @genre %>
+	</div>
+	<div class="col-lg-9 col-md-9">
+		<h4> ジャンル一覧</h4>
+		<table class="table admin-list-table">
+			<tr>
+				<th style="width: 100px"> image</td>
+				<th style="width: 200px"> name</td>
+				<th style="width: 50px"></td>
+				<th style="width: 50px"></td>
+			</tr>
+			<% @genres.each do |genre| %>
 				<tr>
-					<th style="width: 100px"> image</td>
-					<th style="width: 200px"> name</td>
-					<th style="width: 50px"></td>
-					<th style="width: 50px"></td>
+					<td> <%= attachment_image_tag genre, :image, :fill, 100, 80, format: 'jpeg' %></td>
+					<td> <%= link_to genre.name, admin_genre_path(genre) %></td>
+					<td> <%= link_to edit_admin_genre_path(genre) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>
+					<td> <%= link_to admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？" do %> <button type="button" class="btn btn-danger btn-xs">削除</button><% end %></td>
 				</tr>
-				<% @genres.each do |genre| %>
-					<tr>
-						<td> <%= attachment_image_tag genre, :image, :fill, 100, 80, format: 'jpeg' %></td>
-						<td> <%= link_to genre.name, admin_genre_path(genre) %></td>
-						<td> <%= link_to edit_admin_genre_path(genre) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>
-						<td> <%= link_to admin_genre_path(genre), method: :delete, "data-confirm" => "本当に削除しますか？" do %> <button type="button" class="btn btn-danger btn-xs">削除</button><% end %></td>
-					</tr>
-				<% end %>
-			</table>
-			<%= paginate @genres, class: "paginate" %>
-		</div>
+			<% end %>
+		</table>
+		<%= paginate @genres, class: "paginate" %>
 	</div>
 </div>

@@ -1,14 +1,16 @@
-<% @res.each do |res| %>
-    <% tr = TrackRelation.where(song_id: res.id).first %>
-    <div class="song-content">
-        <div class="jacket-cover">
-            <%= attachment_image_tag tr.disc.product, :image, :fallback => "no_image.png", :size => "200x200" ,:class=>"jacket"%>
-            <%= audio_tag(res.file.url) %>
-        </div>
-        <p></p>
-        <p class="text-center word-wrap"><%= link_to res.name+" / "+tr.artist.name, song_path(tr), style:"font-size: 18px" %></p>
-    </div>
-<% end %>
+<div class="container">
+	<% @res.each do |res| %>
+		<% tr = TrackRelation.where(song_id: res.id).first %>
+		<div class="song-content">
+			<div class="jacket-cover">
+				<%= attachment_image_tag tr.disc.product, :image, :fallback => "no_image.png", :size => "200x200" ,:class=>"jacket"%>
+				<%= audio_tag(res.file.url) %>
+			</div>
+			<p></p>
+			<p class="text-center word-wrap"><%= link_to res.name+" / "+tr.artist.name, song_path(tr), style:"font-size: 18px" %></p>
+		</div>
+	<% end %>
+</div>
 
 <script>
 	$(".jacket").on('click', (e)=>{

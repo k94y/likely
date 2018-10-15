@@ -1,37 +1,5 @@
-<style>
-	main{
-		<%# bootstrap適応のためこのクラスの設定を追加、css結合時競合する！！ %>
-		margin:0;
-		padding:0 70px;
-		width:auto;
-	}
 
-	.song-boxes{
-		display: inline;
-		float:left;
-	}
-	.song-box-image{
-		width:40%;
-		text-align: center;
-	}
-	.song-box-detail{
-		width:60%;
-		margin-top:60px;
-	}
-	.song-box-products{
-		width:90%;
-		margin:80px auto 0;
-	}
-	.song-font-head{
-		font-size: 42px;
-	}
-	.song-product-head{
-		display: inline-block;
-	}
-</style>
-
-<main>
-	<br>
+<div class="container">
 	<ol class="breadcrumb">
 		<li><%=link_to "Top","#" %></li>
 		<li>
@@ -43,40 +11,94 @@
 			<%= @track.song.name %>
 		</li>
 	</ol>
-	<div class="song-box clearfix">
-		<div class="song-box-image song-boxes">
-        	<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
+	<div class="row">
+		<div class="col-xs-1" ></div>
+		<div class="col-xs-4">
+			<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
 		</div>
-		<div class="song-box-detail song-boxes">
-			<h2 class="song-font-head"><%= @track.song.name %></h2><hr>
-			<h2><%= @track.artist.name %></h2><hr>
+		<div class="col-xs-6">
+			<h2><p class="small">song name</p><%= @track.song.name %></h2><hr>
+			<h2><p class="small">artist name</p><%= @track.artist.name %></h2><hr>
 		</div>
+		<div class="col-xs-1" ></div>
 	</div>
-	<% @track_list.each do |track_list| %>
-		<h2 class="song-font-head song-product-head"><%= track_list.disc.product.name %></h2>
-		<% if track_list.disc.product.stock == 0 %>
-			<p class="song-product-head"><span class="label label-danger">売り切れ</span></p>
-		<% else %>
-			<p class="song-product-head"><span class="label label-success">在庫あり</span></p>
-		<% end %>
-		<h3 class="song-product-head">¥ <%= track_list.disc.product.price.to_s(:delimited) %></h3>
-		<h3 class="song-product-head">
-			<%= form_tag add_cartdetail_path, method: :post do %>
-				<% if track_list.disc.product.stock > 6 %>
-					<%= select_tag :number, options_for_select(1..6) %>
-					<%= submit_tag "カートに入れる", class:"btn btn-primary" %>
-				<% elsif track_list.disc.product.stock > 0 && track_list.disc.product.stock <= 6 %>
-					<%= select_tag :number, options_for_select(1..track_list.disc.product.stock) %>
-					<%= submit_tag "カートに入れる", class:"btn btn-primary" %>
+	<% @products.each do |product| %>
+		<table class="product-head">
+			<thead>
+				<th class="col-xs-6"><h3 class="show-h-margin-fix"><p class="small">product name</p><%= product.name %></h3></th>
+				<th class="col-xs-2"><h4 class="show-h-margin-fix">¥ <%= product.price.to_s(:delimited) %></h4></th>
+				<% if product.stock == 0 %>
+					<th class="col-xs-4"><h4 class="text-danger show-h-margin-fix">売り切れ</h4></th>
+				<% else %>
+					<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
+					<%= form_tag add_cartdetail_path, method: :post do %>
+						<% if product.stock > 6 %>
+							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..6) %></th>
+						<% else %>
+							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..product.stock) %></th>
+						<% end %>
+						<th class="col-xs-2"><%= submit_tag "カートに入れる", :class=>"btn btn-primary"%></th>
+					<% end %>
 				<% end %>
+			</thead>
+		</table>
+		<table class="product-content">
+			<% product.discs.each do |disc| %>
+				<thead>
+					<th><p class="lead">Disc <%= disc.disc_order %></p></th>
+				</thead>
+				<tbody>
+				<% disc.track_relations.order("track_order").each do |track| %>
+					<tr>
+						<td class="col-xs-1 text-center"><%= track.track_order %></td>
+						<td class="col-xs-3"><%= track.song.name %></td>
+						<td class="col-xs-1"><input type="button" value="試聴" class="btn btn-primary btn-xs audition"/><%= audio_tag(track.song.file.url) %></td>
+						<td class="col-xs-7"></td>
+					</tr>
+				<% end %>
+				</tbody>
 			<% end %>
-		</h3>
-		<hr>
-		<% track_list.disc.product.discs.each do |disc| %>
-			<% disc.track_relations.order("track_order").each do |track| %>
-				<p><%= track.track_order %>:<%= track.song.name %></p>
-			<% end %>
-		<% end %>
+		</table>
 	<% end %>
-</main>
+</div>
 
+<script>
+	$(".audition").on('click', (e)=>{
+		// jqueryでも次の要素取得できるけど, jqueryだとaudio_tagの扱いが特別らしい
+		// なので、pure jsで記述
+
+		let target = $(e.target)
+		target.removeClass("btn-primary")
+		target.addClass("btn-danger")
+
+		let audio = e.target.nextElementSibling
+		audio.volume = 0
+		audio.play()
+
+		// 再生の頭と終わりのボリューム調整
+		audio.addEventListener("timeupdate", ()=>{
+			if(audio.currentTime > audio.duration*0.4 && audio.volume > 0){
+
+				// 小数の調整(入れないと0.49999とかになって死ぬ)
+				audio.volume = Math.round(audio.volume*100)/100
+				if(audio.volume >= 0.1)audio.volume -= 0.1
+
+				if(audio.volume == 0 && audio.play){
+					audio.pause()
+					audio.currentTime = 0
+					target.removeClass("btn-danger")
+					target.addClass("btn-primary")
+				}
+			} else if (audio.volume < 1){
+				audio.volume += 0.25
+			}
+		})
+
+		// end時に再生位置を頭に修正
+		audio.addEventListener("ended", ()=>{
+			audio.currentTime = 0
+			target.removeClass("btn-danger")
+			target.addClass("btn-primary")
+		})
+	})
+</script>

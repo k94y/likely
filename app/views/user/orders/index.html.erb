@@ -1,22 +1,21 @@
+<div class="container">
 <h3>注文履歴</h3>
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <% if @orders.present? %>
-            <% @orders.each do |order| %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3 order-list-head">注文日　<%= order.created_at.strftime('%Y/%m/%d') %></div>
-                            <div class="col-xs-3 order-list-head">合計 ¥<%= get_sum(order) %></div>
-                            <div class="col-xs-3 order-list-head">配送状況：<%= get_shipment_status(order) %></div>
-                            <div class="col-xs-3">
-                            <% if order.cancel_request %>
-                                <span class="in-cancel">キャンセルリクエスト済</span>
-                            <% elsif order.shipment_status == 0 %>
-                                <%= link_to  "キャンセル",  order_path(order),method: :patch, class: "btn btn-danger", "data-confirm" => "注文をキャンセルしますか？"%>
-                            <% end %>
-                            </div>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <% if @orders.present? %>
+        <% @orders.each do |order| %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3 order-list-head">注文日　<%= order.created_at.strftime('%Y/%m/%d') %></div>
+                        <div class="col-xs-3 order-list-head">合計 ¥<%= get_sum(order) %></div>
+                        <div class="col-xs-3 order-list-head">配送状況：<%= get_shipment_status(order) %></div>
+                        <div class="col-xs-3">
+                        <% if order.cancel_request %>
+                            <span class="in-cancel">キャンセルリクエスト済</span>
+                        <% elsif order.shipment_status == 0 %>
+                            <%= link_to  "キャンセル",  order_path(order),method: :patch, class: "btn btn-danger", "data-confirm" => "注文をキャンセルしますか？"%>
+                        <% end %>
                         </div>
-
                     </div>
                     <div class="panel-body">
                         <table class="table">
@@ -37,8 +36,10 @@
                         </table>
                     </div>
                 </div>
-            <% end %>
-        <% else %>
-             <p style="text-align: center"> 注文履歴は存在しません</p>
+            </div>
         <% end %>
-    </div>
+    <% else %>
+            <p style="text-align: center"> 注文履歴は存在しません</p>
+    <% end %>
+</div>
+</div>

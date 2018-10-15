@@ -3,60 +3,103 @@
 <head>
   <title></title>
   <style>
-    .sign-header{
-      height: 100px;
-      background-color: #444;
-      text-align: center;
-      color:white;
-      font-size: 80px;
+    header {
+      background-color: #444444;
+    }
+    body{
+      margin:0;
     }
 
+    .header-box{
+      background-color: #444444;
+      height: 100px;
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .header-title{
+      float: left;
+      padding-left: 20px;
+      font-size: 70px;
+      padding-left: 20px;
+      line-height: 100px;
+      color: white;
+      font-family: 'Athelas';
+    }
     .sign-form-boxes{
-      border: 1px solid #ddd;
+      border: 1px solid #F5F5F5;
+      background-color: #F5F5F5;
     }
     .sign-form-box{
       margin:100px auto 0;
       width:50%;
     }
     .sign-form-top{
-      height:100px;
-      line-height: 100px;
       text-align: center;
-      font-size: 32px;
-    }
-    .sign-form-size{
-      width:70%;
-      height: 30px;
-      margin:30px auto 0;
-      display: block;
-    }
-    .field-rememberme{
-      width:130px;
-      margin:0 auto;
+      font-size: 15px;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
     }
 
+    .sign-form-size{
+      width:300px;
+      height: 40px;
+      font-size:15px;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-form-btn{
+      width:30%;
+      height: 30px;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 15px;
+      display: block;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+
+    .field{
+      width:300px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
     .sign-forget{
       display: block;
-      width:180px;
+      width:250px;
+      text-align: center;
       margin:20px auto;
+      font-family: 'Hiragino Maru Gothic Pro'
     }
 
     .sign-footer{
+      margin-top: 20px;
       text-align: center;
+      font-family: 'Hiragino Maru Gothic Pro'
     }
   </style>
 </head>
 <body>
-  <div class="sign-header">Likely</div>
+  <header>
+    <div class="header-box">
+      <div class="header-title">Likely</div>
+    </div>
+  </header>
   <div class="sign-form-box">
-    <div class="sign-form-top sign-form-boxes">Sign in</div>
-    <div class="sign-form-bottom sign-form-boxes">
+    <div class="sign-form-top sign-form-boxes">
+      <h1>Sign in</h1>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
+          <%= f.label :"Email" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "email", class: :"sign-form-size" %>
         </div>
 
         <div class="field">
+           <%= f.label :password %>
           <%= f.password_field :password, autocomplete: "current-password", :placeholder => "password", class: :"sign-form-size" %>
         </div>
 
@@ -68,14 +111,14 @@
         <% end -%>
 
         <div class="actions">
-          <%= f.submit "Sign in", class: :"sign-form-size", style: :"background-color:#ccc" %>
+          <%= f.submit "Sign in", class: :"sign-form-btn", style: :"background-color:#ccc" %>
         </div>
       <% end %>
       <%= link_to "Forgot your password?", new_password_path(resource_name), class: :"sign-forget" %>
     </div>
   </div>
   <div class="sign-footer">
-    <p>Do you have an account?</p>
+    Do you have an account? <br>
     <%= link_to "Create an account!",new_user_registration_path  %>
   </div>
 </body>
