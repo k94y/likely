@@ -1,4 +1,4 @@
-class CreateNonMembers < ActiveRecord::Migration[5.2]
+class CreateNonMembers < ActiveRecord::Migration[5.0]
   def change
     create_table :non_members, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateArtists < ActiveRecord::Migration[5.2]
+class CreateArtists < ActiveRecord::Migration[5.0]
   def change
     create_table :artists, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :name

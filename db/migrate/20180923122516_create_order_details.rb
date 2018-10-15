@@ -1,4 +1,4 @@
-class CreateOrderDetails < ActiveRecord::Migration[5.2]
+class CreateOrderDetails < ActiveRecord::Migration[5.0]
   def change
     create_table :order_details do, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' |t|
       t.references :order, foreign_key: true
