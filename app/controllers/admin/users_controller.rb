@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::Base
+  load_and_authorize_resource class: false
   def index
     @users = User.page(params[:page]).per(20)
   end
