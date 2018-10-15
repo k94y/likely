@@ -6,7 +6,7 @@
 	<% @genres.each do |genre| %>
 		<div class="genre-image">
 			<%= link_to genre_path(genre) do %>
-				<%= attachment_image_tag genre, :image, fallback: "no_image.png", size: "200x200" %>
+				<%= attachment_image_tag genre, :image, fallback: "no_image.png", size: "200x200", class: "img-rounded" %>
 				<p> <%= genre.name %></p>
 			<% end %>
 		</div>
