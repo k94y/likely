@@ -1,44 +1,43 @@
-<div class="container">
-<%= form_with model: @user ,url: mypages_path,method: :patch  do |f| %>
-<div class="field">
-  <div class="fields">
-    <%= f.label :"E-mail" %><br />
-    <%= f.email_field :email, class: "sign-field sign-field-lg" %>
+<div class="container mt mb">
+<h3 class="text-center">個人情報変更フォーム</h3>
+<%= form_with model: @user ,url: mypages_path, method: :patch, class: "form-horizontal"  do |f| %>
+  <div class="form-group pt pb">
+    <%= f.label :email, "E-mail", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.email_field :email, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"氏名" %><br />
-    <%= f.text_field :name, class: "sign-field sign-field-lg" %>
+  <div class="form-group pt pb">
+    <%= f.label :name, "Name", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :name, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"フリガナ" %><br>
-    <%= f.text_field :name_kana, class: "sign-field sign-field-lg" %>
+  <div class="form-group pt pb">
+    <%= f.label :name_kana, "フリガナ", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :name_kana, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"郵便番号" %><br>
-    <%= f.text_field :postal_code, class: "sign-field sign-field-lg" %>
+  <div class="form-group pt pb">
+    <%= f.label :postal_code, "郵便番号", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :postal_code, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"都道府県" %><br>
-    <%= f.text_field :state, class: "sign-field sign-field-sm" %>
+  <div class="form-group pt pb">
+    <%= f.label :state, "都道府県", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :state, class: "form-control form-control-sm" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"市区町村" %><br>
-    <%= f.text_field :city, class: "sign-field sign-field-lg" %>
+  <div class="form-group pt pb">
+    <%= f.label :city, "市区町村", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :city, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"住所" %><br>
-    <%= f.text_field :address, class: "sign-field sign-field-lg" %>
+  <div class="form-group pt pb">
+    <%= f.label :address, "番地", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :address, class: "form-control" %></div>
   </div>
-  <div class="fields">
-    <%= f.label :"電話番号" %><br>
-    <%= f.text_field :tel, class: "sign-field sign-field-sm" %>
+  <div class="form-group pt pb">
+    <%= f.label :tel, "電話番号", class: "col-xs-3 control-label" %>
+    <div class="col-xs-6"><%= f.text_field :tel, class: "form-control form-control-sm" %></div>
   </div>
   <div class="actions">
-    <%= f.submit "変更", class:"actions-block" %>
+    <%= f.submit "変更", class:"btn btn-default btn-lg" %>
   </div>
   <div>
-    <%=link_to "戻る", mypages_path %>
+    <%=link_to "戻る", mypages_path, class: "btn btn-default pull-right mt mb" %>
   </div>
-</div>
 <% end %>
 </div>
