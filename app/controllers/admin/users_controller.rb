@@ -6,7 +6,6 @@ class Admin::UsersController < Admin::Base
   end
 
   def show
-    authorize! :index, User
     @user = User.find(params[:id])
     @orders = Order.where(user_id: @user.id)
   end
