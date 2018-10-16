@@ -1,66 +1,109 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
   <style>
-    .sign-header{
+    header{
+      background-color: #444444;
+    }
+    body{
+      margin:0;
+    }
+    .header-box{
+      background-color: #444444;
       height: 100px;
-      background-color: #444;
-      text-align: center;
-      color:white;
-      font-size: 80px;
-    }
-    .field{
-      margin: 30px 0;
-    }
-    main{
-      width:60%;
+      width: 1200px;
       margin: 0 auto;
     }
-    .fields{
-      width:70%;
-      margin:0 auto;
+    .header-title{
+      float: left;
+      padding-left: 20px;
+      font-size: 70px;
+      padding-left: 20px;
+      line-height: 100px;
+      color: white;
+      font-family: 'Athelas';
     }
-
-    .sign-title{
+    .sign-form-boxes{
+      border: 1px solid #F5F5F5;
+      background-color: #F5F5F5;
+    }
+    .sign-form-box{
+      margin:100px auto 0;
+      width:50%;
+    }
+    .sign-form-top{
       text-align: center;
-      font-size: 48px;
+      font-size: 15px;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-form-size{
+      width:300px;
+      height: 40px;
+      font-size:15px;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-form-btn{
+      width:30%;
+      height: 30px;
+      margin: 0 auto;
+      margin-top:20px;
+      margin-bottom: 30px;
+      font-size: 15px;
+      display: block;
+      border-radius: 4px;
+      font-family: 'Hiragino Maru Gothic Pro'
     }
 
+    .field{
+      width:300px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
+    .sign-footer{
+      margin-top: 20px;
+      text-align: center;
+      font-family: 'Hiragino Maru Gothic Pro'
+    }
 
   </style>
-</head>
-<body>
-  <div class="sign-header">Likely</div>
-  <main>
-    <h2 class="sign-title">Sign up</h2><hr>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
-      <div class="fields">
+
+
+  <header>
+    <div class="header-box">
+      <div class="header-title">Likely</div>
+    </div>
+  </header>
+   <div class="sign-form-box">
+    <div class="sign-form-top sign-form-boxes">
+      <h1>Sign up</h1>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
         <div class="field">
           <%= f.label :"Email" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: :"sign-form-size" %>
         </div>
         <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password",class: :"sign-form-size" %>
         </div>
-
         <div class="field">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class: :"sign-form-size" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "Sign up", class: :"sign-form-btn", style: :"background-color:#ccc" %>
         </div>
-        <%= link_to "Do you have an account?", new_session_path(resource_name) %><br />
       </div>
     <% end %>
-  </main>
-
-</body>
-</html>
+  </div>
+  <div class="sign-footer">Do you have an account?<br>
+    <%= link_to "Sign in your account!", new_session_path(resource_name) %><br />
+  </div>
+  </div>

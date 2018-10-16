@@ -1,5 +1,5 @@
-<% if @carts.present? %>
 <div class="container">
+<% if @carts.present? %>
 	<div class="row">
 		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			<% total = 0 %>
@@ -28,11 +28,10 @@
 						<p>在庫残り <%= cart.product.stock %> 個</p>
 						<%= link_to "削除", cart_path(cart), method: :delete %>
 					</div>
-
 					<% total += cart.product.price * cart.number %>
 				</div>
-			<% end %>
-		</div>
+			</div>
+		<% end %>
 
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 			<div class="cart">
@@ -47,6 +46,8 @@
 	</div>
 </div>
 
+
 <% else %>
 <div style="text-align: center; margin: 30px"> カートに商品が存在しません</div>
 <% end %>
+</div>

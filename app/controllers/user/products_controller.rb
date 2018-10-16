@@ -12,7 +12,7 @@ class User::ProductsController < User::Base
 				cartd.product.stock -= cartd.number
 				redirect_to carts_path
 			else
-				render 'songs/show'
+				redirect_to root_path
 			end
 		end
  	end
