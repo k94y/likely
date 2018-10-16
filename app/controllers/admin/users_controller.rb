@@ -1,10 +1,12 @@
 class Admin::UsersController < Admin::Base
-  load_and_authorize_resource class: false
+  authorize_resource
+
   def index
     @users = User.page(params[:page]).per(20)
   end
 
   def show
+    authorize! :index, User
     @user = User.find(params[:id])
     @orders = Order.where(user_id: @user.id)
   end

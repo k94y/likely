@@ -1,5 +1,5 @@
 class Admin::OrdersController < Admin::Base
-  load_and_authorize_resource class: false
+  authorize_resource
   def index
     @orders = Order.all.order("id DESC")
   end
