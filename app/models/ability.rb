@@ -17,13 +17,7 @@ class Ability
             can :manage, :all
         else
             #一般ユーザーに対する制限項目
-            cannot :manage, :contact
-            cannot :manage, :genre
-            cannot :manage, :label
-            cannot :manage, :product
-            cannot :manage, :top
-            cannot :manage, :user
-
+            cannot :manage, :all #一般ユーザーが/admin/* にアクセスしようと試みた場合、全て拒否
         end
       else
         # rules for non-admin controllers here
