@@ -1,4 +1,5 @@
 class Admin::GenresController < Admin::Base
+  before_action :authenticate_user!
   authorize_resource
   def index
     @genre = Genre.new

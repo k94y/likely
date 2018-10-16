@@ -1,4 +1,5 @@
 class Admin::LabelsController < Admin::Base
+  before_action :authenticate_user!
   authorize_resource
   def index
     @label = Label.new

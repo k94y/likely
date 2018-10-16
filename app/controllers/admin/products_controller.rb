@@ -1,5 +1,6 @@
 class Admin::ProductsController < Admin::Base
-  authorize_resource
+  before_action :authenticate_user!
+  authorize_resource, except: {:create, :update, :destroy} 
   def index
     @products = Product.page(params[:page]).per(20)
   end
@@ -15,6 +16,7 @@ class Admin::ProductsController < Admin::Base
 
   def create
     product = Product.new(product_params)
+    redirect_to root_path if current_user.customer?
     if product.save!
       redirect_to admin_products_path
     else
@@ -33,6 +35,7 @@ class Admin::ProductsController < Admin::Base
 
   def update
     product = Product.find(params[:id])
+    redirect_to root_path if current_user.customer?
     if params[:request]
       stock = product.stock.to_i + params[:request].to_i
       if product.update!(stock: stock.to_i)
@@ -52,6 +55,7 @@ class Admin::ProductsController < Admin::Base
 
   def destroy
     product = Product.find(params[:id])
+    redirect_to root_path if current_user.customer?
     product.destroy!
     redirect_to admin_products_path
   end

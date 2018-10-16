@@ -1,4 +1,5 @@
 class Admin::OrdersController < Admin::Base
+  before_action :authenticate_user!
   authorize_resource
   def index
     @orders = Order.all.order("id DESC")
