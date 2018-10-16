@@ -1,3 +1,14 @@
+<style>
+	.row {
+		margin-bottom: 50px;
+		margin-top: 30px;
+	}
+	.back-btn {
+		margin-top: 100px;
+		text-decoration: none;
+	}
+</style>
+
 <div class="row">
 	<div class="col-lg-10 col-lg-offset-1">
 		<h2> User詳細</h2>
@@ -61,5 +72,8 @@
 				</tr>
 			<% end %>
 		</table>
+		<div>
+			<%=link_to "戻る", admin_users_path,class: :"back-btn btn btn-default" %>
+		</div>
 	</div>
 </div>

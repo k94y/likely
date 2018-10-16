@@ -1,1 +1,10 @@
+<style>
+	.back-btn{
+		margin-top: 50px;
+		text-decoration: none;
+	}
+</style>
+
 <%= render 'admin/edit', var: @artist %>
+
+<%=link_to "戻る", admin_artists_path,class: :"back-btn btn btn-default" %>
