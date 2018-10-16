@@ -1,47 +1,66 @@
-<%= form_with model: @user ,url: admin_user_path,method: :patch  do |f| %>
-<div class="field">
-  <div class="fields">
-    <%= f.label :"E-mail" %><br />
-    <%= f.email_field :email, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"氏名" %><br />
-    <%= f.text_field :name, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"フリガナ" %><br>
-    <%= f.text_field :name_kana, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"郵便番号" %><br>
-    <%= f.text_field :postal_code, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"都道府県" %><br>
-    <%= f.text_field :state, class: "sign-field sign-field-sm" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"市区町村" %><br>
-    <%= f.text_field :city, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"住所" %><br>
-    <%= f.text_field :address, class: "sign-field sign-field-lg" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"電話番号" %><br>
-    <%= f.text_field :tel, class: "sign-field sign-field-sm" %>
-  </div>
-  <div class="fields">
-    <%= f.label :"管理者権限" %><br>
-    <%= f.select :admin, options_for_select({"管理者": true, "ユーザ": false}, @user.admin) %>
-  </div>
-  <div class="actions">
-    <%= f.submit "変更", class:"actions-block" %>
-  </div>
-  <div>
-    <%=link_to "戻る", admin_users_path %>
+<style>
+  .fields{
+    margin-top: 10px;
+  }
+</style>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+    <div style="margin: 20px 0">
+
+
+    <h2 style="min-width: 500px"> ユーザ編集</h2>
+
+    <%= form_with model: @user ,url: admin_user_path,method: :patch  do |f| %>
+    <div class="field">
+      <div class="fields">
+        <%= f.label :"E-mail" %><br />
+        <%= f.email_field :email, class: "sign-field sign-field-lg form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"氏名" %><br />
+        <%= f.text_field :name, class: "sign-field sign-field-lg form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"フリガナ" %><br>
+        <%= f.text_field :name_kana, class: "sign-field sign-field-lg form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"郵便番号" %><br>
+        <%= f.text_field :postal_code, class: "sign-field sign-field-lg form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"都道府県" %><br>
+        <%= f.text_field :state, class: "sign-field sign-field-sm form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"市区町村" %><br>
+        <%= f.text_field :city, class: "sign-field sign-field-sm form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"住所" %><br>
+        <%= f.text_field :address, class: "sign-field sign-field-lg form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"電話番号" %><br>
+        <%= f.text_field :tel, class: "sign-field sign-field-sm form-control" %>
+      </div>
+      <div class="fields">
+        <%= f.label :"管理者権限" %><br>
+        <%= f.select :admin, options_for_select({"管理者": true, "ユーザ": false}, @user.admin) %>
+      </div>
+      <div class="actions">
+        <%= f.submit "変更", class:"btn btn-warning" %>
+      </div>
+      <div style="margin-top: 50px">
+        <%= link_to admin_users_path do %>
+          <button type="button" class="btn btn-default">戻る</button>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+    </div>
   </div>
 </div>
-<% end %>
 
