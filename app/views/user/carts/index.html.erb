@@ -6,7 +6,7 @@
 			<% @carts.each do |cart| %>
 				<div class="cart clearfix">
 					<div class="cart-image">
-						<%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpg' %>
+						<%= attachment_image_tag cart.product, :image, size:"100x100", format: 'jpg' %>
 					</div>
 					<div class="cart-detail-1">
 						<p style="font-size: 18px"><%= cart.product.name %></p>
