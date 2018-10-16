@@ -1,4 +1,5 @@
 class Admin::ArtistsController < Admin::Base
+  before_action :authenticate_user!
   authorize_resource
   def index
     @artist = Artist.new

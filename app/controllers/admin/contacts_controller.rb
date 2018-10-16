@@ -1,4 +1,5 @@
 class Admin::ContactsController < Admin::Base
+  before_action :authenticate_user!
   authorize_resource
   def index
   	@contacts = Contact.all.order("id desc")
