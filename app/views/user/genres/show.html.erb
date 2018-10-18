@@ -1,5 +1,5 @@
 <div class="container-fluid genre-mainimage-box">
-	<%= attachment_image_tag @genre, :image, :fill, 3000, 3000, class:"genre-mainimage" %>
+	<%= attachment_image_tag @genre, :image, size:"3000x3000", class:"genre-mainimage" %>
 	<p class="genre-mainimage-comment"> <%= @genre.name %></p>
 </div>
 

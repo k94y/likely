@@ -7,7 +7,7 @@
 	<% end %>
 	<% if request.path_info == edit_admin_artist_path || request.path_info == edit_admin_genre_path %>
 		<label> 画像編集</label><br>
-		<%= attachment_image_tag var, :image, :fill, 150, 100, format: 'jpeg' %>
+		<%= attachment_image_tag var, :image, size:"150x100", format: 'jpeg' %>
 		<%= f.attachment_field :image %><br>
 	<% end %>
 	<%= f.submit "Submit" %>
