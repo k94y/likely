@@ -27,7 +27,7 @@
                             </thead>
                             <% order.order_details.each do |detail| %>
                                 <tr>
-                                    <td class="col-xs-3"><%= attachment_image_tag detail.product, :image, :fill, 60, 60, class: "thumbnail-fix", fallback: "no_image.png"%></td>
+                                    <td class="col-xs-3"><%= attachment_image_tag detail.product, :image, size:"60x60", class: "thumbnail-fix", fallback: "no_image.png"%></td>
                                     <td class="col-xs-5"><%= detail.product.name %></td>
                                     <td class="col-xs-2"><%= detail.price %></td>
                                     <td class="col-xs-2"><%= detail.number %></td>
