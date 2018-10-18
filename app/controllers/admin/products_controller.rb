@@ -15,11 +15,15 @@ class Admin::ProductsController < Admin::Base
   end
 
   def create
-    product = Product.new(product_params)
-    if product.save!
+    @product = Product.new(product_params)
+    if @product.save
       redirect_to admin_products_path
     else
-      redirect_to new_admin_product_path
+      @artists = Artist.all
+      @genres = Genre.all
+      @labels = Label.all
+      @songs = Song.all
+      render "new" 
     end
   end
 
@@ -33,22 +37,21 @@ class Admin::ProductsController < Admin::Base
   end
 
   def update
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
     if params[:request]
-      stock = product.stock.to_i + params[:request].to_i
-      if product.update!(stock: stock.to_i)
+      stock = @product.stock.to_i + params[:request].to_i
+      if @product.update(stock: stock.to_i)
         redirect_to admin_products_path
       else
         redirect_to admin_products_path
       end
     else
-      if product.update!(product_params)
+      if @product.update(product_params)
         redirect_to admin_products_path
       else
-        redirect_to new_admin_product_path
+        redirect_to edit_admin_product_path(@product.id), alert: @product.errors.full_messages
       end
     end
-
   end
 
   def destroy
@@ -64,9 +67,9 @@ class Admin::ProductsController < Admin::Base
       discs_attributes: [
         :id, :disc_order, :_destroy,
         track_relations_attributes: [
-          :id, :song_id, :artist_id, :disk_id, :track_order,  :_destroy,
+          :id, :song_id, :disk_id, :track_order,  :_destroy,
           song_attributes: [
-            :id, :name, :file, :recommend_level, :file_cache, :remove_file
+            :id, :name, :file, :artist_id,  :recommend_level, :file_cache, :remove_file
           ]
         ]
       ]

@@ -12,7 +12,7 @@
 				<%= audio_tag(s.file.url) %>
 			</div>
 			<p></p>
-			<p class="text-center word-wrap"><%= link_to s.name+" / "+tr.artist.name, song_path(tr), style:"font-size: 18px" %></p>
+			<p class="text-center word-wrap"><%= link_to s.name+" / "+tr.song.artist.name, song_path(tr), style:"font-size: 18px" %></p>
 		</div>
 	<% end %>
 	<%= paginate @songs %>

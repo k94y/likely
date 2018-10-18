@@ -14,6 +14,11 @@
     <%= link_to_add_field("track add", f, :track_relations, {}) %>
 
     <table class="table">
+        <thead>
+            <th>トラック番号</th>
+            <th>アーティスト</th>
+            <th>楽曲ファイル/名</th>
+        </thead>
         <tbody>
             <% f.object.track_relations.each do |tr| %>
                 <%= f.fields_for :track_relations, tr, child_index: tr.object_id do |builder| %>

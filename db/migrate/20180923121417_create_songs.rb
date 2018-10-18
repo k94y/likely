@@ -4,7 +4,8 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :file
       t.integer :recommend_level
-
+      t.references :artist, foreign_key: true
+      
       t.timestamps
     end
   end

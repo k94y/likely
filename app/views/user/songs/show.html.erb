@@ -1,6 +1,6 @@
 
 <div class="container">
-	<ol class="breadcrumb">
+	<ol class="breadcrumb mt mb">
 		<li><%=link_to "Top","#" %></li>
 		<li>
 			<%=link_to genre_path(@track.disc.product.genre.id) do %>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-xs-6">
 			<h2><p class="small">song name</p><%= @track.song.name %></h2><hr>
-			<h2><p class="small">artist name</p><%= @track.artist.name %></h2><hr>
+			<h2><p class="small">artist name</p><%= @track.song.artist.name %></h2><hr>
 		</div>
 		<div class="col-xs-1" ></div>
 	</div>
@@ -31,14 +31,20 @@
 					<th class="col-xs-4"><h4 class="text-danger show-h-margin-fix">売り切れ</h4></th>
 				<% else %>
 					<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
-					<%= form_tag add_cartdetail_path, method: :post do %>
-						<% if product.stock > 6 %>
-							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..6) %></th>
-						<% else %>
-							<th class="col-xs-1">個数 <%= select_tag :number, options_for_select(1..product.stock) %></th>
+					<th class="col-xs-3">
+						<%= form_with url: add_cartdetail_path, method: :post, class:"form-inline" do |f| %>
+							<div class="form-group">
+								<% if product.stock > 6 %>
+									<%= f.label :number, "個数" %>
+									<%= f.select :number, options_for_select(1..6), {}, class:"form-control" %>
+								<% else %>
+									<%= f.label :number, "個数" %>
+									<%= f.select :number, options_for_select(1..product.stock), {},class:"form-control" %>
+								<% end %>
+							</div>
+							<%= f.submit "カートに入れる", :class=>"btn btn-primary pull-right"%>
 						<% end %>
-						<th class="col-xs-2"><%= submit_tag "カートに入れる", :class=>"btn btn-primary"%></th>
-					<% end %>
+					</th>
 				<% end %>
 			</thead>
 		</table>

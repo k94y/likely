@@ -1,4 +1,7 @@
- <td class='song-form col-xs-2'>
+<td class="song-form col-xs-2">
+    <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
+</td>
+<td class='song-form col-xs-2'>
     <%= f.file_field :file, class: 'form-control'%>
 </td>
 <td class='song-form col-xs-2'>

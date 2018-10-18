@@ -7,9 +7,9 @@ class User::SearchesController < User::Base
       array = []
   		artists = Artist.where('name LIKE ?', "%#{params[:keyword]}%")
       artists.each do |art|
-        tr = TrackRelation.where(artist_id: art.id)
-        tr.each do |t|
-          array << t.song
+        songs = Song.where(artist_id: art.id)
+        songs.each do |s|
+          array << s
         end
       end
       @res = array.uniq

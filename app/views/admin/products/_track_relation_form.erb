@@ -1,8 +1,5 @@
 <tr>
     <td class="col-xs-1"><%= f.number_field :track_order, class: 'form-control', min: 1%></td> 
-    <td class="col-xs-2">
-        <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
-    </td>
     <% if controller.action_name == "new" %>
         <%= new_song_field(f, :song, {}) %>
         <td><%= select_song_field("mode:新規曲選択", f, :song, "new",{})%>
