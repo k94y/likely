@@ -32,7 +32,7 @@
 				<% else %>
 					<th class="col-xs-1"><h4 class="text-info show-h-margin-fix">在庫あり</h4></th>
 					<th class="col-xs-3">
-						<%= form_with url: add_cartdetail_path, method: :post, class:"form-inline" do |f| %>
+						<%= form_with url: add_cartdetail_path(product.id), method: :post, class:"form-inline" do |f| %>
 							<div class="form-group">
 								<% if product.stock > 6 %>
 									<%= f.label :number, "個数" %>
