@@ -1,12 +1,12 @@
 <td class="song-form col-xs-2">
     <%= f.select :artist_id, @artists.map{|t| [t.name, t.id]},{}, class: 'form-control'  %>
 </td>
-<td class='song-form col-xs-2'>
+<td class='song-form col-xs-3'>
     <%= f.file_field :file, class: 'form-control'%>
 </td>
 <td class='song-form col-xs-2'>
     <%= f.text_field :name, class: 'form-control' %>
 </td>
-<td class='song-form col-xs-3'>
+<td class='song-form col-xs-2'>
     <%= f.range_field :recommend_level, class: 'recommend', min: 1, max: 5, step: 1 %>
 </td>
