@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resource :mypages, only: [:show, :edit, :new, :create, :update, :destroy]
     resources :carts, only: [:index, :update, :destroy]
     resource :contacts, only: [:new, :create]
-    post 'products/:post_id/add', to: "products#add", as: "add_cartdetail"
+    post 'products/:id/add', to: "products#add", as: "add_cartdetail"
     patch 'mypages/info', to: 'mypages#create_info'
   end
 end
