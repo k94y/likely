@@ -8,11 +8,11 @@
       <% if user_signed_in? %>
         <%= form_for (@contact) do |f| %>
             <div class="form-group">
-              <%= f.label :"タイトル" %><br />
+              <%= f.label :title, "題名" %>
               <%= f.text_field :title, class: "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :"お問い合わせ内容" %><br />
+              <%= f.label :body, "内容" %>
               <%= f.text_area :body, class: "form-control" %>
             </div>
             <div class="contact-actions">
@@ -24,20 +24,20 @@
         <%= form_for @contact do |f| %>
           <%= fields_for @non_member do |nf| %>
             <div class="form-group">
-              <%= f.label :"名前"  %><br>
+              <%= f.label :name, "名前" %>
               <%= nf.text_field :name, class: "form-control"  %>
             </div>
             <div class="form-group">
-              <%= f.label :"Email"  %><br>
+              <%= f.label :email, "E-mail"  %>
               <%= nf.email_field :email, class: "form-control"  %>
             </div>
           <% end %>
             <div class="form-group">
-              <%= f.label :"タイトル" %><br />
+              <%= f.label :title, "題名" %>
               <%= f.text_field :title, class: "form-control" %>
             </div>
             <div class="form-group">
-              <%= f.label :"お問い合わせ内容" %><br />
+              <%= f.label :body, "内容" %>
               <%= f.text_area :body, class: "form-control" %>
             </div>
             <div class="contact-actions">
