@@ -12,10 +12,12 @@ class User::SearchesController < User::Base
           array << s
         end
       end
+      flash[:notice] = "\"#{@keyword}\" が演奏する楽曲を表示します"
       @res = array.uniq
   	elsif @sel == 2
   		#曲名
-   		@res = Song.where('name LIKE ?', "%#{params[:keyword]}%")
+      flash[:notice] = "\"#{@keyword}\" と曲名が類似する楽曲を表示します"
+       @res = Song.where('name LIKE ?', "%#{params[:keyword]}%")
   	elsif @sel == 3
   		#商品名
       array = []
@@ -27,6 +29,7 @@ class User::SearchesController < User::Base
           end
         end
       end
+      flash[:notice] = "\"#{@keyword}\" の商品に含まれる楽曲を表示します"
       @res = array.uniq
   	else
   		redirect_to root_path
@@ -36,6 +39,6 @@ class User::SearchesController < User::Base
   def create
   	#パラメータからクエリパラメータを含むurlを生成する。
   	arg = {sel: params[:sel], keyword: params[:keyword]}
-	redirect_to "/searches?#{arg.to_query}"
+    redirect_to "/searches?#{arg.to_query}"
   end
 end
