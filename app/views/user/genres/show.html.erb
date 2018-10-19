@@ -7,8 +7,8 @@
 	<% @songs.each do |s| %>
 		<% tr = TrackRelation.where(song_id: s.id).first %>
 		<div class="song-content">
-			<div class="jacket-coverrai">
-				<%= attachment_image_tag tr.disc.product, :image, :fallback => "no_image.png", :size => "200x200" ,:class=>"jacket"%>
+			<div class="jacket-cover">
+				<%= attachment_image_tag tr.disc.product, :image, :fallback => "no_image.png", :size => "200x200" ,:class=>"img-thumbnail jacket"%>
 				<%= audio_tag(s.file.url) %>
 			</div>
 			<p></p>
