@@ -201,6 +201,7 @@ footer{
 }
 
 .jacket{
+	@extend .image-thumbnail;
 	background-color: #fff;
 	opacity: 1;
 	transition: 200ms ease;
