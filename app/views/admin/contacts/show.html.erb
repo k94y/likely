@@ -1,36 +1,30 @@
-<div>
-	<div class="admin-contact-box-contents">お問い合わせ日時</div>
-	<div class="admin-contact-box-contents"><%= @contact.created_at %></div>
-</div>
-<div>
-	<div class="admin-contact-box-contents">お問い合わせ者氏名</div>
-	<div class="admin-contact-box-contents">
-		<%= @name %>
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-3 mb mt">
+		<h3 class="mt mb">問合せ内容</h3><hr>
+		<p>問合せ日時: <%= @contact.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+		<p>タイトル: <%= @contact.title %></p>
+		<p class="lead"><%= @contact.body %></p>
+	</div>
+
+	<div class="col-xs-6 col-xs-offset-3 mb mt">
+		<h3 class="mt mb">返信</h3><hr>
+		<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
+			<div class="form-group">
+				<%= f.lable :title, "タイトル" %>
+				<%= f.text_field :title, class: "form-control" %>
+			</div>
+
+			<div class="form-group">
+				<%= f.lable :body, "内容" %>
+				<%= f.text_area :body, class: "form-control" %>
+			</div>
+			
+			<div>
+				<%= f.submit, class: "btn btn-default"%>
+			</div>
+		<% end %>
 	</div>
 </div>
-<div>
-	<div class="admin-contact-box-contents">タイトル</div>
-	<div class="admin-contact-box-contents"><%= @contact.title %></div>
-</div>
-<div>
-	<div class="admin-contact-box-contents">内容</div>
-	<div class="admin-contact-box-contents"><p><%= @contact.body %></p></div>
-</div>
-<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
-	<div>
-		<div class="admin-contact-box-contents">返信タイトル</div>
-		<div class="admin-contact-box-contents">
-			<%= f.text_field :title %>
-		</div>
-	</div>
-	<div>
-		<div class="admin-contact-box-contents">返信内容</div>
-		<div class="admin-contact-box-contents">
-			<%= f.text_area :body %>
-		</div>
-	</div>
-	<div>
-		<%= f.submit %>
-	</div>
-<% end %>
+
+
 
