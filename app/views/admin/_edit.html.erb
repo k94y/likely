@@ -1,14 +1,24 @@
-<%= form_for [:admin, var] do |f| %>
-	<label> name</label><br>
-	<%= f.text_field :name %><br><br>
+<%= form_for [:admin, var], class="" do |f| %>
+	<div class="form-group">
+		<label> name</label>
+		<%= f.label :name, "" %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+
 	<% if request.path_info == edit_admin_artist_path %>
-		<label> name(カナ)</label><br>
-		<%= f.text_field :name_kana %><br><br>
+		<div class="form-group">
+			<%= f.label :name_kana, "フリガナ" %>
+			<%= f.text_field :name_kana, class: "form-control" %>
+		</div>
 	<% end %>
+	
 	<% if request.path_info == edit_admin_artist_path || request.path_info == edit_admin_genre_path %>
-		<label> 画像編集</label><br>
-		<%= attachment_image_tag var, :image, size:"150x100", format: 'jpeg' %>
-		<%= f.attachment_field :image %><br>
+		<div class="form-group">
+			<%= f.label :image %>
+			<%= f.attachment_field :image, class: "form-control" %>
+			<%= attachment_image_tag var, :image, size:"150x100"%>
+		</div>
 	<% end %>
-	<%= f.submit "Submit" %>
+	
+	<%= f.submit "Submit", class: "btn btn-default mt" %>
 <% end %>
