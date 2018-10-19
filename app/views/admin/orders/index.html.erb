@@ -13,22 +13,28 @@
 	<tbody>
 		<% @orders.each do |order| %>
 			<tr>
-				<%= form_for [:admin, order] do |f| %>
-					<th><%= order.id %></th>
-					<td><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
-					<td><%= order.user.id %></td>
-					<td><%= f.select :shipment_status, options_for_select([["準備中", 0], ["発送済", 1], ["到着済", 2]], order.shipment_status), {}, onchange: "javascript: this.form.submit();" %></td>
-					<td class="admin-order-buttons">
-						<%= link_to admin_order_path(order.id) do %>
-							<button type="button" class="btn btn-primary btn-xs">詳細</button>
+				<td class="col-xs-1"><%= order.id %></td>
+				<td class="col-xs-2"><%= order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+				<td class="col-xs-1"><%= order.user.id %></td>
+				<td class="col-xs-1">
+					<%= form_for [:admin, order] do |f| %>
+						<%= f.select :shipment_status, options_for_select([["準備中", 0], ["発送済", 1], ["到着済", 2]], order.shipment_status), {}, class: "form-control",onchange: "this.form.submit();" %>
+					<% end %>
+				</td>
+				<td class="col-xs-1">
+					<%= link_to admin_order_path(order.id) do %>
+						<button type="button" class="btn btn-primary">詳細</button>
+					<% end %>
+				</td>
+				<td class="col-xs-1">
+					<% if order.cancel_request %>
+						<%= link_to destroy_user_session_path, method: :delete, data: {confirm: "注文をキャンセルしますか" } do %>
+							<button type="button" class="btn btn-danger">キャンセル</button>
 						<% end %>
-					</td>
-					<td class="admin-order-buttons">
-						<%= link_to destroy_user_session_path, method: :delete, data: {confirm: "本当に削除しますか？" } do %>
-							<button type="button" class="btn btn-danger btn-xs">停止</button>
-						<% end %>
-					</td>
-				<% end %>
+					<% else %>
+
+					<% end %>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
