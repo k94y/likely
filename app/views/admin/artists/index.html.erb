@@ -15,7 +15,7 @@
 			</tr>
 			<% @artists.each do |artist| %>
 				<tr>
-					<td> <%= attachment_image_tag artist, :image, size:"100x80", format: 'jpeg' %></td>
+					<td> <%= attachment_image_tag artist, :image, size:"100x80", format: 'jpeg', class:"img-thumbnail" %></td>
 					<td> <%= artist.name %></td>
 					<td> <%= artist.name_kana %></td>
 					<td> <%= link_to edit_admin_artist_path(artist) do %> <button type="button" class="btn btn-success btn-xs">編集</button><% end %></td>

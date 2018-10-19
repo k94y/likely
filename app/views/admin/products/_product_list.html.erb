@@ -13,7 +13,7 @@
         <tbody>
             <% products.each do |p| %>
                 <tr>
-                    <td class="col-xs-1"><%= attachment_image_tag p, :image, class: "img-rounded", fallback: "no_image.png", size: "50x50"%></td>
+                    <td class="col-xs-1"><%= attachment_image_tag p, :image, class: "img-thumbnail", fallback: "no_image.png", size: "50x50"%></td>
                     <td class="col-xs-2 table-text-contents"><%= p.name %></td>
                     <td class="col-xs-1 table-text-contents"><%= p.stock %>枚</td>
                     <td class="col-xs-4">

@@ -14,7 +14,7 @@
 	<div class="row">
 		<div class="col-xs-1" ></div>
 		<div class="col-xs-4">
-			<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300" %>
+			<%= attachment_image_tag @track.disc.product, :image, fallback: "no_image.png", size: "300x300", class: "img-thumbnail" %>
 		</div>
 		<div class="col-xs-6">
 			<h2><p class="small">song name</p><%= @track.song.name %></h2><hr>
