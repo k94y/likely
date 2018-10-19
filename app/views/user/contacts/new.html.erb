@@ -1,49 +1,50 @@
 <div class="container mb mt">
-  <h3 class="contact-title">Contact</h3><hr>
-    <% if flash[:alert] %>
-      <p><%= flash[:alert] %></p>
-    <% end %>
-  <% if user_signed_in? %>
-    <%= form_for (@contact) do |f| %>
-      <div class="contact-field">
-        <div class="contact-fields">
-          <%= f.label :"タイトル" %><br />
-          <%= f.text_field :title, class: "contact-field-sm" %>
-        </div>
-        <div class="contact-fields">
-          <%= f.label :"お問い合わせ内容" %><br />
-          <%= f.text_area :body, class: "contact-field-lg" %>
-        </div>
-        <div class="contact-actions">
-          <%= f.submit "問い合わせる", class:"actions-block btn btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <%= form_for @contact do |f| %>
-      <div class="contact-field">
-       <%= fields_for @non_member do |nf| %>
-        <div class="contact-fields">
-          <%= f.label :"名前"  %><br>
-          <%= nf.text_field :name, class: "contact-field-sm"  %>
-        </div>
-        <div class="contact-fields">
-          <%= f.label :"Email"  %><br>
-          <%= nf.email_field :email, class: "contact-field-sm"  %>
-        </div>
-       <% end %>
-        <div class="contact-fields">
-          <%= f.label :"タイトル" %><br />
-          <%= f.text_field :title, class: "contact-field-sm" %>
-        </div>
-        <div class="contact-fields">
-          <%= f.label :"お問い合わせ内容" %><br />
-          <%= f.text_area :body, class: "contact-field-lg" %>
-        </div>
-        <div class="contact-actions">
-          <%= f.submit "問い合わせる", class:"actions-block btn btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h3 class="text-center">Contact</h3><hr>
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %></p>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= form_for (@contact) do |f| %>
+            <div class="form-group">
+              <%= f.label :"タイトル" %><br />
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :"お問い合わせ内容" %><br />
+              <%= f.text_area :body, class: "form-control" %>
+            </div>
+            <div class="contact-actions">
+              <%= f.submit "問い合わせる", class:"actions-block btn btn-default" %>
+            </div>
+
+        <% end %>
+      <% else %>
+        <%= form_for @contact do |f| %>
+          <%= fields_for @non_member do |nf| %>
+            <div class="form-group">
+              <%= f.label :"名前"  %><br>
+              <%= nf.text_field :name, class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <%= f.label :"Email"  %><br>
+              <%= nf.email_field :email, class: "form-control"  %>
+            </div>
+          <% end %>
+            <div class="form-group">
+              <%= f.label :"タイトル" %><br />
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :"お問い合わせ内容" %><br />
+              <%= f.text_area :body, class: "form-control" %>
+            </div>
+            <div class="contact-actions">
+              <%= f.submit "問い合わせる", class:"actions-block btn btn-default" %>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
