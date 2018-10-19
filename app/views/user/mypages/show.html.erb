@@ -36,6 +36,11 @@
                 <%= link_to "注文履歴", orders_path, class: "btn btn-default" %>
                 <br>
                 <%= link_to "退会", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？"} %>
+                <% if current_user.admin == "admin" %>
+                    <br>
+                    <br>
+                    <%= link_to  "管理者ページへ", admin_path, class: "btn btn-default" %>
+                <% end %>
             </div>
         </div>
     </div>
