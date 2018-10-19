@@ -10,12 +10,12 @@
 		<h3 class="mt mb">返信</h3><hr>
 		<%= form_for @contact, url: admin_contact_path, method: :patch do |f| %>
 			<div class="form-group">
-				<%= f.lable :title, "タイトル" %>
+				<%= f.label :title, "タイトル" %>
 				<%= f.text_field :title, class: "form-control" %>
 			</div>
 
 			<div class="form-group">
-				<%= f.lable :body, "内容" %>
+				<%= f.label :body, "内容" %>
 				<%= f.text_area :body, class: "form-control" %>
 			</div>
 
