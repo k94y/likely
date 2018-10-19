@@ -2,7 +2,7 @@
     <td class="col-xs-1"><%= f.number_field :track_order, class: 'form-control', min: 1%></td> 
     <% if controller.action_name == "new" %>
         <%= new_song_field(f, :song, {}) %>
-        <td><%= select_song_field("mode:新規曲選択", f, :song, "new",{})%>
+        <td><%= select_song_field("mode:新規曲選択", f, :song, "new",{})%></td>
     <% elsif controller.action_name == "edit" %>
         <%= render "admin/products/select_song_form", f: f%>
         <td><%= select_song_field("mode:既存曲選択", f, :song, "exist",{})%></td>
